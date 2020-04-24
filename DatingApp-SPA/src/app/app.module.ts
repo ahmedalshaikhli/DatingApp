@@ -46,6 +46,7 @@ import { HasRoleDirective } from './_directives/hasRole.directive';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+import { MemberFilterPipe } from './members/member-filter.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -77,7 +78,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     HasRoleDirective,
     UserManagementComponent,
     PhotoManagementComponent,
-    RolesModalComponent
+    RolesModalComponent,
+    MemberFilterPipe
   ],
   imports: [
     BrowserModule,
