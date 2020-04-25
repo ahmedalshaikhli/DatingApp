@@ -33,6 +33,10 @@ namespace DatingApp.API.Controllers
             var userFromRepo = await _repo.GetUser(currentUserId, true);
 
             userParams.UserId = currentUserId;
+              if (string.IsNullOrEmpty(userParams.Specialist))
+            {
+                userParams.Specialist = userFromRepo.Specialist = "Otolaryngology";
+            }
 
             if (string.IsNullOrEmpty(userParams.Gender))
             {
@@ -42,6 +46,7 @@ namespace DatingApp.API.Controllers
             {
                 userParams.City = userFromRepo.City = "baghdad";
             }
+          
             var users = await _repo.GetUsers(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);

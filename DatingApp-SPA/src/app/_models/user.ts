@@ -10,6 +10,7 @@ export interface User {
   lastActive: any;
   photoUrl: string;
   city: string;
+  specialist: string;
   country: string;
   interests?: string;
   introduction?: string;

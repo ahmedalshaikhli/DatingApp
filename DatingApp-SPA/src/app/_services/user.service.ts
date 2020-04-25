@@ -38,6 +38,7 @@ export class UserService {
       params = params.append('gender', userParams.gender);
       params = params.append('orderBy', userParams.orderBy);
       params = params.append('city', userParams.city);
+      params = params.append('specialist', userParams.specialist);
     }
 
     if (likesParam === 'Likers') {

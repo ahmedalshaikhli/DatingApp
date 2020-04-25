@@ -12,13 +12,21 @@ import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 })
 export class MemberListComponent implements OnInit {
   users: User[];
+
+  searchTerm: string;
+  user: User = JSON.parse(localStorage.getItem('user'));
+  specialistList = [
+    { value: 'Otolaryngology', display: 'Otolaryngology' },
+    { value: 'Nephrology', display: 'Nephrology' },
+    { value: 'Sportsmedicine', display: 'Sports medicine' },
+    { value: 'Childneurology', display: 'Child neurology' }
+  ];
+
   cityList = [
     { value: 'baghdad', display: 'Baghdad' },
     { value: 'Diyala', display: 'Diyala' },
     { value: 'Erbil', display: 'Erbil' },
   ];
-  searchTerm: string;
-  user: User = JSON.parse(localStorage.getItem('user'));
   genderList = [
     { value: 'male', display: 'Males' },
     { value: 'female', display: 'Females' }
@@ -40,6 +48,7 @@ export class MemberListComponent implements OnInit {
 
     this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
     this.userParams.city = this.user.city;
+    this.userParams.specialist = this.user.specialist;
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
     this.userParams.orderBy = 'lastActive';
@@ -53,6 +62,7 @@ export class MemberListComponent implements OnInit {
   resetFilters() {
     this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
     this.userParams.city = this.user.city;
+    this.userParams.specialist = this.user.specialist;
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
     this.loadUsers();
