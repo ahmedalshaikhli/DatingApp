@@ -12,6 +12,11 @@ import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
 })
 export class MemberListComponent implements OnInit {
   users: User[];
+  cityList = [
+    { value: 'baghdad', display: 'Baghdad' },
+    { value: 'Diyala', display: 'Diyala' },
+    { value: 'Erbil', display: 'Erbil' },
+  ];
   searchTerm: string;
   user: User = JSON.parse(localStorage.getItem('user'));
   genderList = [
@@ -34,6 +39,7 @@ export class MemberListComponent implements OnInit {
     });
 
     this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.city = this.user.city;
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
     this.userParams.orderBy = 'lastActive';
@@ -46,6 +52,7 @@ export class MemberListComponent implements OnInit {
 
   resetFilters() {
     this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.city = this.user.city;
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
     this.loadUsers();

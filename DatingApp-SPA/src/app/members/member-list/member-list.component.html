@@ -5,7 +5,7 @@
 <div class="container mt-3">
 
     <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
-        <div class="form-group">
+      <!--   <div class="form-group">
           <label for="minAge">Age From</label>
           <input type="number" class="form-control ml-1" style="width: 70px" id="minAge"
             [(ngModel)]="userParams.minAge" name="minAge">
@@ -15,8 +15,16 @@
           <label for="maxAge">Age To</label>
           <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge"
              [(ngModel)]="userParams.maxAge" name="maxAge">
-        </div>
-
+        </div> -->
+         <div class="form-group px-2">
+          <label for="city">Show: </label>
+          <select class="form-control ml-1" style="width: 130px" id="city"
+            [(ngModel)]="userParams.city" name="city">
+            <option *ngFor="let city of cityList" [value]="city.value">
+              {{city.display}}
+            </option>
+          </select>
+        </div> 
         <div class="form-group px-2">
           <label for="gender">Show: </label>
           <select class="form-control ml-1" style="width: 130px" id="gender"
@@ -42,7 +50,9 @@
       </form>
       <br>
 <div class="form-group">
-  <input type="text" class = "form-control" style="width: 300px;" [(ngModel)]="searchTerm">
+   
+  <input type="text" placeholder="Search for Dr Name" class = "form-control" style="width: 300px;" [(ngModel)]="searchTerm">
+  
 </div>
 
   <div class="row">
