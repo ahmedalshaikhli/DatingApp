@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './_services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import { User } from './_models/user';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,12 @@ import { User } from './_models/user';
 export class AppComponent implements OnInit {
   jwtHelper = new JwtHelperService();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, public translate: TranslateService) {
+    translate.addLangs(['en', 'fr']);
+    translate.setDefaultLang('en');
+    const broswerLang = translate.getBrowserLang();
+    translate.use(broswerLang.match(/en|fr/) ? broswerLang : 'en');
+  }
 
   ngOnInit() {
     const token = localStorage.getItem('token');
@@ -24,4 +30,9 @@ export class AppComponent implements OnInit {
       this.authService.changeMemberPhoto(user.photoUrl);
     }
   }
+
+  switchTheLanguage(language: string) {
+    this.translate.use(language);
+  }
+
 }

@@ -1,9 +1,5 @@
-<div class="text-center mt-3">
-    <h2>Your matches - {{pagination.totalItems}} found</h2>
-  </div>
 
 <div class="container mt-3">
-
     <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
       <!--   <div class="form-group">
           <label for="minAge">Age From</label>
@@ -16,60 +12,67 @@
           <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge"
              [(ngModel)]="userParams.maxAge" name="maxAge">
         </div> -->
-        <div class="form-group px-2">
-          <label for="specialist">Show: </label>
-          <select class="form-control ml-1" style="width: 130px" id="specialist"
+        <div class="col-md-3 col-sm-12 form-group" style="padding: 0;">
+          <label for="specialist">الاختصاص :  </label>
+          <select class="form-control select-res"  id="specialist"
             [(ngModel)]="userParams.specialist" name="specialist">
             <option *ngFor="let specialist of specialistList" [value]="specialist.value">
               {{specialist.display}}
             </option>
           </select>
         </div> 
-         <div class="form-group px-2">
-          <label for="city">Show: </label>
-          <select class="form-control ml-1" style="width: 130px" id="city"
+         <div class="col-md-3 col-sm-12 form-group" style="padding: 0;">
+          <label for="city">المدينة : </label>
+          <select class="form-control select-res" id="city"
             [(ngModel)]="userParams.city" name="city">
             <option *ngFor="let city of cityList" [value]="city.value">
               {{city.display}}
             </option>
           </select>
         </div> 
-        <div class="form-group px-2">
-          <label for="gender">Show: </label>
-          <select class="form-control ml-1" style="width: 130px" id="gender"
+        <div class="col-md-3 col-sm-12 form-group">
+          <label for="gender">الجنس : </label>
+          <select class="form-control select-res" id="gender"
             [(ngModel)]="userParams.gender" name="gender">
             <option *ngFor="let gender of genderList" [value]="gender.value">
               {{gender.display}}
             </option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
-        <button type="button" class="btn btn-info" (click)="resetFilters()" style="margin-left:10px">
-            Reset Filter
-        </button>
-        <div class="col">
-          <div class="btn-group float-right">
-            <button type="button" name="orderBy" class="btn btn-primary"
-              [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="lastActive">Last Active</button>
-            <button type="button" name="orderBy" class="btn btn-primary"
-              [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="created">Newest Members</button>
-          </div>
+        <div class="col-md-3 col-sm-12"  style="padding: 0;">
+          <button type="button" class="btn btn-primary float-left" (click)="resetFilters()" >
+            مسح البحث
+          </button>
+          <button type="submit" class="btn btn-info float-left" style="margin-left:10px;">البحث</button>
         </div>
-
-      </form>
-      <br>
-<div class="form-group">
    
-  <input type="text" placeholder="Search for Dr Name" class = "form-control" style="width: 300px;" [(ngModel)]="searchTerm">
-  
-</div>
-
+      </form>
+   
+      <br>
+    <div class="row" style="margin-bottom:10px">
+        <div class="col-md-4">
+          <input type="text" placeholder="ابحث اسم طبيب" class = "form-control" style="width: 263px;" [(ngModel)]="searchTerm">
+        </div>
+        <div class="col-md-4">
+          <h3 style="text-align: center;">يوجد هناك {{pagination.totalItems}}- طبيب</h3>
+        </div>
+        <div class="col-md-4">
+          <!-- <div class="btn-group float-left">
+            <button type="button" name="orderBy" class="btn btn-primary"
+              [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="lastActive">آخر نشاط</button>
+            <button type="button" name="orderBy" class="btn btn-primary"
+              [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="created">الاطباء الجدد</button>
+          </div> -->
+        </div>
+    </div>
+     
   <div class="row">
     <div *ngFor="let user of users | memberFilter:searchTerm" class="col-lg-2 col-md-3 col-sm-6">
       <app-member-card [user]="user"></app-member-card>
     </div>
   </div>
 </div>
+
 
 <div class="d-flex justify-content-center">
   <pagination

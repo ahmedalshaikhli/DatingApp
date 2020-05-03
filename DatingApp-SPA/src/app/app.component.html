@@ -1,2 +1,12 @@
 <app-nav></app-nav>
+<!-- <div>
+    <label for="">
+        {{'HOME.SELECT' | translate}}   
+        <select #langslect (change)= "translate.use(langslect.value)" name="" id="">
+            <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+
+        </select>
+
+    </label>
+</div> -->
 <router-outlet></router-outlet>

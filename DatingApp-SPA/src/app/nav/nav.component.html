@@ -1,41 +1,50 @@
+
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']">DatingApp</a>
-    <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
+  <a class="navbar-brand" [routerLink]="['/home']">
+    المؤسسة العراقية للاطباء
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }">
+    <ul *ngIf="loggedIn()"  class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/members']">Matches</a>
+        <a class="nav-link" [routerLink]="['/members']">الاطباء</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/lists']">Lists</a>
+        <a class="nav-link" [routerLink]="['/lists']">المفضلة</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/messages']">Messages</a>
+        <a class="nav-link" [routerLink]="['/messages']">الرسائل</a>
       </li>
       <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+        <a class="nav-link" [routerLink]="['/admin']">إدارة</a>
       </li>
     </ul>
-
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
-        <span class="mr-1">
-            <img src="{{photoUrl || '../../assets/user.png'}}" alt="">
-          </span>
-      <a class="dropdown-toggle text-light" dropdownToggle>
-        Welcome {{ authService.decodedToken?.unique_name | titlecase }}
-      </a>
+      <span class="mr-1">
+          <img src="{{photoUrl || '../../assets/user.png'}}" alt="">
+        </span>
+    <a class="dropdown-toggle text-light" dropdownToggle>
+      أهلا بك {{ authService.decodedToken?.unique_name | titlecase }}
+    </a>
 
-      <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item" [routerLink]="['/member/edit']"
-          ><i class="fa fa-user"></i> Edit Profile</a
-        >
-        <div class="dropdown-item"></div>
-        <a class="dropdown-item" (click)="logout()"
-          ><i class="fa fa-sign-out"></i> Logout</a
-        >
-      </div>
+    <div class="dropdown-menu mt-3" *dropdownMenu>
+      <a class="dropdown-item" [routerLink]="['/member/edit']"
+        ><i class="fa fa-user"></i> تعديل الملف الشخصي</a
+      >
+      <div class="dropdown-item"></div>
+      <a class="dropdown-item" (click)="logout()"
+        ><i class="fa fa-sign-out"></i> تسجيل خروج</a
+      >
     </div>
-
-    <form
+  </div>
+  <form
       *ngIf="!loggedIn()"
       #loginForm="ngForm"
       class="form-inline my-2 my-lg-0"
@@ -62,7 +71,7 @@
         class="btn btn-success my-2 my-sm-0"
         type="submit"
       >
-        Login
+        الدخول
       </button>
     </form>
   </div>

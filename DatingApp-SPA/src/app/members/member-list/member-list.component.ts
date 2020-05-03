@@ -16,20 +16,20 @@ export class MemberListComponent implements OnInit {
   searchTerm: string;
   user: User = JSON.parse(localStorage.getItem('user'));
   specialistList = [
-    { value: 'Otolaryngology', display: 'Otolaryngology' },
-    { value: 'Nephrology', display: 'Nephrology' },
-    { value: 'Sportsmedicine', display: 'Sports medicine' },
-    { value: 'Childneurology', display: 'Child neurology' }
+    { value: 'Otolaryngology', display: 'الأنف والأذن والحنجرة' },
+    { value: 'Nephrology', display: 'أمراض الكلى' },
+    { value: 'Sportsmedicine', display: 'الطب الرياضي' },
+    { value: 'Childneurology', display: 'طب أعصاب الأطفال' }
   ];
 
   cityList = [
-    { value: 'baghdad', display: 'Baghdad' },
-    { value: 'Diyala', display: 'Diyala' },
-    { value: 'Erbil', display: 'Erbil' },
+    { value: 'baghdad', display: 'بغداد' },
+    { value: 'Diyala', display: 'ديالى' },
+    { value: 'Erbil', display: 'أربيل' },
   ];
   genderList = [
-    { value: 'male', display: 'Males' },
-    { value: 'female', display: 'Females' }
+    { value: 'male', display: 'طبيب' },
+    { value: 'female', display: 'طبيبة' }
   ];
   userParams: any = {};
   pagination: Pagination;

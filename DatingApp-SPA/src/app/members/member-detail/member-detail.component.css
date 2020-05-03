@@ -6,6 +6,7 @@
 
 .card-body {
     padding: 0 25px;
+    text-align: right;
 }
 
 .card-footer {
@@ -13,3 +14,4 @@
     background-color: #fff;
     border-top: none;
 }
+
