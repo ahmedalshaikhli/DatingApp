@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-panel',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
+  registerMode = true;
 
-  ngOnInit() {
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {}
+
+  registerToggle() {
+    this.registerMode = true;
   }
 
+  cancelRegisterMode(registerMode: boolean) {
+    this.registerMode = registerMode;
+  }
 }

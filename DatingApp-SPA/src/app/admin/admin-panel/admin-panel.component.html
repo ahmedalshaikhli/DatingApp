@@ -1,15 +1,19 @@
 <div class="container mt-5">
-  <h2>Admin Panel</h2>
+  <h2 class="text-center">لوحة الادارة</h2>
   <div class="tab-panel">
     <tabset class="member-tabset">
-      <tab heading="User Management" *appHasRole="['Admin']">
+      <tab heading="اضافة عضو جديد" *appHasRole="['Admin', 'Moderator']">
+        <app-register></app-register>
+      </tab>
+      <tab heading="ادارة الاعضاء" *appHasRole="['Admin']">
         <div class="container">
             <app-user-management></app-user-management>
         </div>
       </tab>
-      <tab heading="Photo Management" *appHasRole="['Admin', 'Moderator']">
+      <tab heading="ادارة الصور" *appHasRole="['Admin', 'Moderator']">
         <app-photo-management></app-photo-management>
       </tab>
+
     </tabset>
   </div>
 </div>

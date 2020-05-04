@@ -1,16 +1,16 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()">
-  <h2 class="text-center text-primary">Sign Up</h2>
-  <hr />
+ 
+  
 
-  <div class="form-group">
-    <label class="control-label" style="margin-right:10px">I am a: </label>
+  <div class="form-group pull-right">
+    <label class="control-label" style="margin-right:10px">الجنس: </label>
     <label class="radio-inline">
       <input
         class="mr-3"
         type="radio"
         value="male"
         formControlName="gender"
-      />Male
+      />رجل
     </label>
     <label class="radio-inline ml-3">
       <input
@@ -18,7 +18,7 @@
         type="radio"
         value="female"
         formControlName="gender"
-      />Female
+      />انثى
     </label>
   </div>
 
@@ -32,10 +32,10 @@
       }"
       class="form-control"
       formControlName="username"
-      placeholder="Username"
-    />
-    <div class="invalid-feedback">Please choose a username</div>
+      placeholder="اسم العضو" />
+    <div class="invalid-feedback ">الرجاء ادخال التخصص </div>
   </div>
+
 
   <div class="form-group">
     <input
@@ -45,18 +45,35 @@
           registerForm.get('knownAs').touched
       }"
       class="form-control"
-      placeholder="Known as"
+      placeholder="الكنية"
       formControlName="knownAs"
     />
     <div
       class="invalid-feedback"
       *ngIf="
         registerForm.get('knownAs').touched &&
-        registerForm.get('knownAs').hasError('required')
-      "
-    >
-      Known as is required
+        registerForm.get('knownAs').hasError('required')">
+     الرجاء ادخال الكنية
     </div>
+  </div>
+
+  <div class="form-group">
+    <input 
+      [ngClass]="{
+        'is-invalid':
+          registerForm.get('specialist').errors &&
+          registerForm.get('specialist').touched
+      }"
+      class="form-control"
+      placeholder="التخصص"
+      formControlName="specialist"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+        registerForm.get('specialist').touched &&
+        registerForm.get('specialist').hasError('required')">
+الرجاء ادخال التخصص    </div>
   </div>
 
   <div class="form-group">
@@ -67,7 +84,7 @@
           registerForm.get('dateOfBirth').touched
       }"
       class="form-control"
-      placeholder="Date of Birth"
+      placeholder="تاريخ الميلاد"
       formControlName="dateOfBirth"
       type="text"
       bsDatepicker
@@ -80,7 +97,7 @@
         registerForm.get('dateOfBirth').hasError('required')
       "
     >
-      Date of Birth is required
+      الرجاء ادخال تاريخ الميلاد
     </div>
   </div>
 
@@ -91,7 +108,7 @@
           registerForm.get('city').errors && registerForm.get('city').touched
       }"
       class="form-control"
-      placeholder="City"
+      placeholder="المدينة"
       formControlName="city"
     />
     <div
@@ -101,7 +118,7 @@
         registerForm.get('city').hasError('required')
       "
     >
-      City is required
+      الجاء ادخال اسم المدينة
     </div>
   </div>
 
@@ -113,7 +130,7 @@
           registerForm.get('country').touched
       }"
       class="form-control"
-      placeholder="Country"
+      placeholder="البلد"
       formControlName="country"
     />
     <div
@@ -123,7 +140,7 @@
         registerForm.get('country').hasError('required')
       "
     >
-      Country is required
+     الرجاء ادخال اسم البلد
     </div>
   </div>
 
@@ -137,7 +154,7 @@
       }"
       class="form-control"
       formControlName="password"
-      placeholder="Password"
+      placeholder="كلمة السر"
     />
     <div
       class="invalid-feedback"
@@ -146,7 +163,7 @@
         registerForm.get('password').touched
       "
     >
-      Password is required
+      الرجاء ادخال كلمة السر
     </div>
     <div
       class="invalid-feedback"
@@ -155,7 +172,7 @@
         registerForm.get('password').touched
       "
     >
-      Password must be at least 4 characters
+    يجب أن تتكون كلمة المرور من 4 أحرف على الأقل
     </div>
     <div
       class="invalid-feedback"
@@ -164,7 +181,7 @@
         registerForm.get('password').touched
       "
     >
-      Password cannot exceed 8 characters
+    لا يمكن أن تتجاوز كلمة المرور 8 أحرف
     </div>
   </div>
 
@@ -180,7 +197,7 @@
       type="password"
       class="form-control"
       formControlName="confirmPassword"
-      placeholder="Confirm Password"
+      placeholder="اعادة كلمة السر"
     />
     <div
       class="invalid-feedback"
@@ -189,7 +206,7 @@
         registerForm.get('confirmPassword').touched
       "
     >
-      Confirm Password is required
+    تأكيد كلمة المرور 
     </div>
     <div
       class="invalid-feedback"
@@ -198,7 +215,7 @@
         registerForm.get('confirmPassword').touched
       "
     >
-      Passwords must match
+    الكلمة السريه يجب ان تتطابق
     </div>
   </div>
 
@@ -208,10 +225,8 @@
       [disabled]="!registerForm.valid"
       type="submit"
     >
-      Register
+      التسجيل
     </button>
-    <button class="btn btn-default" type="button" (click)="cancel()">
-      Cancel
-    </button>
+
   </div>
 </form>
