@@ -3,6 +3,8 @@ import { User } from 'src/app/_models/user';
 import { AdminService } from 'src/app/_services/admin.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { RolesModalComponent } from '../roles-modal/roles-modal.component';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-user-management',
@@ -10,22 +12,32 @@ import { RolesModalComponent } from '../roles-modal/roles-modal.component';
   styleUrls: ['./user-management.component.css']
 })
 export class UserManagementComponent implements OnInit {
-  users: User[];
-  bsModalRef: BsModalRef;
-
+  private gridApi;
   constructor(
     private adminService: AdminService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private http: HttpClient
   ) {}
+  users: User[];
+  bsModalRef: BsModalRef;
+  rowData: any;
+  columnDefs = [
+    {headerName: 'رقم العضوية', field: 'id' , sortable: true , filter: true, resizable: true, width: 100},
+    {headerName: 'اسم العضو', field: 'userName'  , sortable: true, filter: true, resizable: true, width: 300},
+    {headerName: 'الدور', field: 'roles' , sortable: true, filter: true, resizable: true , width: 600}
+    ];
+
+
 
   ngOnInit() {
-    this.getUsersWithRoles();
+   this.getUsersWithRoles();
   }
 
   getUsersWithRoles() {
     this.adminService.getUsersWithRoles().subscribe(
       (users: User[]) => {
         this.users = users;
+        this.rowData = this.users;
       },
       error => {
         console.log(error);

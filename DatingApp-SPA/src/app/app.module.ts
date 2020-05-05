@@ -49,6 +49,7 @@ import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 import { MemberFilterPipe } from './members/member-filter.pipe';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { AgGridModule } from 'ag-grid-angular';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -103,6 +104,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     ModalModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
+    AgGridModule.withComponents([]),
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
