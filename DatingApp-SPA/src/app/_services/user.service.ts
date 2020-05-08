@@ -153,7 +153,7 @@ export class UserService {
 
 
 
-  Search(
+  GetDoctorsBeforeReg(
     page?,
     itemsPerPage?,
     userParams?,
@@ -179,7 +179,7 @@ export class UserService {
  
 
     return this.http
-      .get<User[]>(this.baseUrl + 'usersBeforeReg/search?', { observe: 'response', params })
+      .get<User[]>(this.baseUrl + 'doctors/GetDoctorsBeforeReg?', { observe: 'response', params })
       .pipe(
         map(response => {
           paginatedResult.result = response.body;

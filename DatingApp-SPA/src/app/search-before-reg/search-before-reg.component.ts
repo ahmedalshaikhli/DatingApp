@@ -67,7 +67,7 @@ export class SearchBeforeRegComponent implements OnInit {
 
   loadUsers() {
     this.userService
-      .Search(
+      .GetDoctorsBeforeReg(
         this.pagination.currentPage,
         this.pagination.itemsPerPage,
         this.userParams

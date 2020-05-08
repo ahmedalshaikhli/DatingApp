@@ -13,9 +13,8 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
-// import { MembersBeforeRegComponent } from './members-before-reg/members-before-reg.component';
 import { SearchBeforeRegComponent } from './search-before-reg/search-before-reg.component';
-import { ListsResolver2 } from './_resolvers/lists.resolver2';
+import { DoctorsResolverB } from './_resolvers/doctors.resolver';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -65,7 +64,7 @@ export const appRoutes: Routes = [
         // Adding the role to the route
         path: 'app-search-before-reg',
         component: SearchBeforeRegComponent,
-        resolve: { users: ListsResolver2 }
+        resolve: { users: DoctorsResolverB }
       }
     ]
   },

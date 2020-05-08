@@ -17,11 +17,11 @@ namespace DatingApp.API.Controllers
     //[ServiceFilter(typeof(LogUserActivity))]
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersBeforeRegController : ControllerBase
+    public class DoctorsController : ControllerBase
     {
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
-        public UsersBeforeRegController(IDatingRepository repo, IMapper mapper)
+        public DoctorsController(IDatingRepository repo, IMapper mapper)
         {
             _mapper = mapper;
             _repo = repo;
@@ -29,8 +29,8 @@ namespace DatingApp.API.Controllers
 
 
        [AllowAnonymous]
-       [HttpGet("search")]
-        public async Task<IActionResult> Search([FromQuery]UserParams userParams)
+       [HttpGet("GetDoctorsBeforeReg")]
+        public async Task<IActionResult> GetDoctorsBeforeReg([FromQuery]UserParams userParams)
         {
 
               if (string.IsNullOrEmpty(userParams.Specialist))
@@ -43,7 +43,7 @@ namespace DatingApp.API.Controllers
                 userParams.Gender = "male";
             }
     	  
-            var users = await _repo.Search(userParams);
+            var users = await _repo.GetDoctorsBeforeReg(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 

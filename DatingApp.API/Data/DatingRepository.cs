@@ -165,15 +165,15 @@ namespace DatingApp.API.Data
 
             return messages;
         }
-        public async Task<PagedList<User>> GetUsersBeforeReg(UserParams userParams)
-        {
-            var users = _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
+        // public async Task<PagedList<User>> GetUsersBeforeReg(UserParams userParams)
+        // {
+        //     var users = _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
 
-              users = users.Where(u => u.City == userParams.City);
-            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
-        }
+        //       users = users.Where(u => u.City == userParams.City);
+        //     return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
+        // }
 
- public async Task<PagedList<User>> Search(UserParams userParams)
+ public async Task<PagedList<User>> GetDoctorsBeforeReg(UserParams userParams)
         {
             var users = _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
 

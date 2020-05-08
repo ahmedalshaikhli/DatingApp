@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
-export class ListsResolver2 implements Resolve<User[]> {
+export class DoctorsResolverB implements Resolve<User[]> {
   pageNumber = 1;
   pageSize = 5;
  
@@ -20,7 +20,7 @@ export class ListsResolver2 implements Resolve<User[]> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
     return this.userService
-      .Search(this.pageNumber, this.pageSize, null)
+      .GetDoctorsBeforeReg(this.pageNumber, this.pageSize, null)
       .pipe(
         catchError(error => {
           this.alertify.error('Problem retrieving data');

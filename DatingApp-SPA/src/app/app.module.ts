@@ -5,7 +5,7 @@ import {
 } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule,HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -54,7 +54,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AgGridModule } from 'ag-grid-angular';
 import { BlogsComponent } from './blogs/blogs.component';
 import { SearchBeforeRegComponent } from './search-before-reg/search-before-reg.component';
-import { ListsResolver2 } from './_resolvers/lists.resolver2';
+import { DoctorsResolverB } from './_resolvers/doctors.resolver';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -133,7 +133,7 @@ providers: [
     MemberListResolver,
     MemberEditResolver,
     ListsResolver,
-    ListsResolver2,
+    DoctorsResolverB,
     MessagesResolver,
     PreventUnsavedChanges,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
