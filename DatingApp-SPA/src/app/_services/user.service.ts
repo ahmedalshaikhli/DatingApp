@@ -179,7 +179,7 @@ export class UserService {
  
 
     return this.http
-      .get<User[]>(this.baseUrl + 'doctors/GetDoctorsBeforeReg?', { observe: 'response', params })
+      .get<User[]>(this.baseUrl + 'doctors/GetDoctors?', { observe: 'response', params })
       .pipe(
         map(response => {
           paginatedResult.result = response.body;

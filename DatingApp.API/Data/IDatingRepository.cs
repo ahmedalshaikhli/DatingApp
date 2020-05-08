@@ -11,13 +11,14 @@ namespace DatingApp.API.Data
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveAll();
         Task<PagedList<User>> GetUsers(UserParams userParams);
-        Task<PagedList<User>> GetDoctorsBeforeReg(UserParams userParams);
         Task<User> GetUser(int id, bool isCurrentUser);
+        Task<PagedList<User>> GetDoctors(UserParams userParams);
+        Task<User> GetDoctor(int id);
         Task<Photo> GetPhoto(int id);
         Task<Photo> GetMainPhotoForUser(int userId);
         Task<Like> GetLike(int userId, int recipientId);
         Task<Message> GetMessage(int id);
-        // Task<PagedList<User>> GetUsersBeforeReg(UserParams userParams);
+
         Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams);
         Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId);
     }

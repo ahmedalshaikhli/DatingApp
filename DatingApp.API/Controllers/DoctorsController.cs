@@ -29,8 +29,8 @@ namespace DatingApp.API.Controllers
 
 
        [AllowAnonymous]
-       [HttpGet("GetDoctorsBeforeReg")]
-        public async Task<IActionResult> GetDoctorsBeforeReg([FromQuery]UserParams userParams)
+       [HttpGet("GetDoctors")]
+        public async Task<IActionResult> GetDoctors([FromQuery]UserParams userParams)
         {
 
               if (string.IsNullOrEmpty(userParams.Specialist))
@@ -43,7 +43,7 @@ namespace DatingApp.API.Controllers
                 userParams.Gender = "male";
             }
     	  
-            var users = await _repo.GetDoctorsBeforeReg(userParams);
+            var users = await _repo.GetDoctors(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
@@ -52,6 +52,18 @@ namespace DatingApp.API.Controllers
 
             return Ok(usersToReturn);
         }
+        [AllowAnonymous]    
+        [HttpGet("{id}", Name = "GetDoctor")]
+        public async Task<IActionResult> GetDoctorBeforeReg(int id)
+        {
+
+            var user = await _repo.GetDoctor(id);
+
+            var userToReturn = _mapper.Map<UserForDetailedDto>(user);
+
+            return Ok(userToReturn);
+        }
+
 
   }
 }

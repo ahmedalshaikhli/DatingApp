@@ -13,7 +13,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
-import { SearchBeforeRegComponent } from './search-before-reg/search-before-reg.component';
+import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorsResolverB } from './_resolvers/doctors.resolver';
 
 export const appRoutes: Routes = [
@@ -62,8 +62,8 @@ export const appRoutes: Routes = [
       // },
       {
         // Adding the role to the route
-        path: 'app-search-before-reg',
-        component: SearchBeforeRegComponent,
+        path: 'app-doctors',
+        component: DoctorsComponent,
         resolve: { users: DoctorsResolverB }
       }
     ]

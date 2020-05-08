@@ -11,11 +11,11 @@ import { tap, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-search-before-reg',
-  templateUrl: './search-before-reg.component.html',
-  styleUrls: ['./search-before-reg.component.css']
+  selector: 'app-doctors',
+  templateUrl: './doctors.component.html',
+  styleUrls: ['./doctors.component.css']
 })
-export class SearchBeforeRegComponent implements OnInit {
+export class DoctorsComponent implements OnInit {
   users: User[];
 
   searchTerm: string;

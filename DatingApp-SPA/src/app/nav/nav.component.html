@@ -27,7 +27,7 @@
         <a class="nav-link" [routerLink]="['/admin']">إدارة</a>
       </li>
       <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/app-search-before-reg']">الاطباء</a>
+        <a class="nav-link" [routerLink]="['/app-doctors']">الاطباء</a>
       </li>
     </ul>
     <div *ngIf="loggedIn()" class="dropdown" dropdown>

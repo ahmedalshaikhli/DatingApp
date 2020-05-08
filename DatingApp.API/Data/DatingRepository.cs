@@ -173,7 +173,7 @@ namespace DatingApp.API.Data
         //     return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         // }
 
- public async Task<PagedList<User>> GetDoctorsBeforeReg(UserParams userParams)
+ public async Task<PagedList<User>> GetDoctors(UserParams userParams)
         {
             var users = _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
 
@@ -183,6 +183,15 @@ namespace DatingApp.API.Data
 
             return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
+        public async Task<User> GetDoctor(int id)
+        {
+            var query = _context.Users.Include(p => p.Photos).AsQueryable();
 
+                query = query.IgnoreQueryFilters();
+
+            var doctor = await query.FirstOrDefaultAsync(u => u.Id == id);
+
+            return doctor;
+        }
     }
 }

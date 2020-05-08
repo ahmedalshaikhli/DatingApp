@@ -53,7 +53,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AgGridModule } from 'ag-grid-angular';
 import { BlogsComponent } from './blogs/blogs.component';
-import { SearchBeforeRegComponent } from './search-before-reg/search-before-reg.component';
+import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorsResolverB } from './_resolvers/doctors.resolver';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -94,7 +94,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       RolesModalComponent,
       MemberFilterPipe,
       BlogsComponent,
-      SearchBeforeRegComponent
+      DoctorsComponent
    ],
    imports: [
       BrowserModule,
