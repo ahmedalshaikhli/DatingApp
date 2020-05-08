@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-    [ServiceFilter(typeof(LogUserActivity))]
+    //[ServiceFilter(typeof(LogUserActivity))]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -24,7 +24,7 @@ namespace DatingApp.API.Controllers
             _mapper = mapper;
             _repo = repo;
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetUsers([FromQuery]UserParams userParams)
         {
@@ -35,7 +35,7 @@ namespace DatingApp.API.Controllers
             userParams.UserId = currentUserId;
               if (string.IsNullOrEmpty(userParams.Specialist))
             {
-                userParams.Specialist = userFromRepo.Specialist = "Otolaryngology";
+                userParams.Specialist = userFromRepo.Specialist = "Childneurology";
             }
 
             if (string.IsNullOrEmpty(userParams.Gender))
@@ -56,7 +56,7 @@ namespace DatingApp.API.Controllers
 
             return Ok(usersToReturn);
         }
-
+        
         [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
@@ -112,5 +112,6 @@ namespace DatingApp.API.Controllers
 
               return BadRequest("Failed to like user");
          }
+
     }
 }

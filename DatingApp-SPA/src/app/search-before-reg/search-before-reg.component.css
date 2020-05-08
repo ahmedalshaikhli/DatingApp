@@ -1,0 +1,48 @@
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {  
+    .select-res{
+        width: 0px
+    }
+    .label {
+        
+        margin-bottom: 0.5rem;
+        float: right !important;
+    }
+}
+ 
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {  
+    .select-res{
+        width: 100px
+    }
+    .label {
+      
+        margin-bottom: 0.5rem;
+        float: right !important;
+    }
+ 
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .select-res{
+        width: 182px
+    }
+    label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        float: right;
+    }
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+    .select-res{
+        width: 192px
+    }
+    
+}
+ 
+ 

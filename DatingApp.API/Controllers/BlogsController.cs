@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatingApp.API.Data;
+using DatingApp.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,30 +13,33 @@ namespace DatingApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class BlogsController : ControllerBase
     {
         private readonly DataContext _context;
-        public ValuesController(DataContext context)
+        private readonly IMapper _mapper;
+        public BlogsController(DataContext context,IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
 
-        // GET api/values
+        // GET api/blogs
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetValues()
+        public async Task<IActionResult> GetBlogs()
         {
-            var values = await _context.Values.ToListAsync();
+            var blogs = await _context.Blogs.ToListAsync();
+            var blogsToReturn = _mapper.Map<IEnumerable<BlogForListDto>>(blogs);
 
-            return Ok(values);
+            return Ok(blogsToReturn);
         }
 
-        // GET api/values/5
-        [Authorize(Roles = "Member")]
+        // GET api/blogs/5
+       [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetValue(int id)
         {
-            var value = await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
+            var value = await _context.Blogs.FirstOrDefaultAsync(x => x.Id == id);
 
             return Ok(value);
         }

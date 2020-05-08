@@ -16,9 +16,11 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace DatingApp.API.Controllers
 {
+    //api/auth --- authcontroller
     [Route("api/[controller]")]
     [ApiController]
     [AllowAnonymous]
+    //  ControllerBase without view support for api
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _config;
@@ -78,7 +80,7 @@ namespace DatingApp.API.Controllers
         private async Task<string> GenerateJwtToken(User user)
         {
             var claims = new List<Claim>
-            {
+            {   // like the identifire
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.UserName)
             };
@@ -90,6 +92,7 @@ namespace DatingApp.API.Controllers
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
+            // its in appsetting
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

@@ -12,18 +12,22 @@
 
   <div class="collapse navbar-collapse"
        [ngClass]="{ 'show': navbarOpen }">
-    <ul *ngIf="loggedIn()"  class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
+    <ul   class="navbar-nav mr-auto">
+      <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/members']">الاطباء</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/lists']">المفضلة</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/messages']">الرسائل</a>
       </li>
-      <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active">
+      <!-- *appHasRole="['Admin', 'Moderator']"  -->
+      <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/admin']">إدارة</a>
+      </li>
+      <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/app-search-before-reg']">الاطباء</a>
       </li>
     </ul>
     <div *ngIf="loggedIn()" class="dropdown" dropdown>

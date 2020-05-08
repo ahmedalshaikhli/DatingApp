@@ -37,7 +37,8 @@ namespace DatingApp.API.Controllers
             _cloudinary = new Cloudinary(acc);
         }
 
-        [Authorize(Policy = "RequireAdminRole")]
+        //[Authorize(Policy = "RequireAdminRole")]
+        [AllowAnonymous]
         [HttpGet("userswithroles")]
         public async Task<IActionResult> GetUsersWithRoles()
         {
