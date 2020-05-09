@@ -11,7 +11,6 @@ namespace DatingApp.API.Data
 
         public DbSet<Value> Values { get; set; }
         public DbSet<Photo> Photos { get; set; }
-        public DbSet<Blog> Blogs { get; set; }
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }

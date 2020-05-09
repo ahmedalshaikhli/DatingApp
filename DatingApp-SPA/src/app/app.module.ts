@@ -52,7 +52,6 @@ import { MemberFilterPipe } from './members/member-filter.pipe';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { AgGridModule } from 'ag-grid-angular';
-import { BlogsComponent } from './blogs/blogs.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorsResolverB } from './_resolvers/doctors.resolver';
 import { HospitalsComponent } from './hospitals/hospitals.component';
@@ -99,7 +98,6 @@ export class CustomHammerConfig extends HammerGestureConfig {
       PhotoManagementComponent,
       RolesModalComponent,
       MemberFilterPipe,
-      BlogsComponent,
       DoctorsComponent,
       HospitalsComponent,
       AboutComponent
