@@ -193,5 +193,15 @@ namespace DatingApp.API.Data
 
             return doctor;
         }
+
+        public Task<PagedList<Hospital>> GetHospitals()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Hospital> GetHospital(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

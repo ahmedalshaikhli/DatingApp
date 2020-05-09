@@ -29,6 +29,13 @@
       <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/app-doctors']">الاطباء</a>
       </li>
+      <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/app-about']">من نحن</a>
+      </li>
+      <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/app-hospitals']">المستشفيات</a>
+      </li>
+   
     </ul>
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
       <!-- <span class="mr-1">
@@ -40,12 +47,10 @@
 
     <div class="dropdown-menu mt-3" *dropdownMenu>
       <a class="dropdown-item" [routerLink]="['/member/edit']"
-        ><i class="fa fa-user"></i> تعديل الملف الشخصي</a
-      >
+        ><i class="fa fa-user"></i> تعديل الملف الشخصي</a>
       <div class="dropdown-item"></div>
-      <a class="dropdown-item" (click)="logout()"
-        ><i class="fa fa-sign-out"></i> تسجيل خروج</a
-      >
+      <a class="dropdown-item" (click)="logout()">
+        <i class="fa fa-sign-out"></i> تسجيل خروج</a>
     </div>
   </div>
   <form

@@ -1,0 +1,94 @@
+<form [formGroup]="hospitalForm" (ngSubmit)="register()">
+
+  <div class="form-group">
+    <input
+      [ngClass]="{
+        'is-invalid':
+        hospitalForm.get('name').errors &&
+        hospitalForm.get('name').touched
+      }"
+      class="form-control"
+      placeholder="ادخل اسم المستشفى"
+      formControlName="name"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+      hospitalForm.get('name').touched &&
+      hospitalForm.get('name').hasError('required')">
+     الرجاء ادخال الكنية
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input 
+      [ngClass]="{
+        'is-invalid':
+        hospitalForm.get('phone').errors &&
+        hospitalForm.get('phone').touched
+      }"
+      class="form-control"
+      placeholder="ادخل رقم الهاتف"
+      formControlName="phone"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+      hospitalForm.get('phone').touched &&
+      hospitalForm.get('phone').hasError('required')">
+الرجاء ادخال التخصص    </div>
+  </div>
+
+  <div class="form-group">
+    <input
+      [ngClass]="{
+        'is-invalid':
+        hospitalForm.get('numberOfDoctors').errors && hospitalForm.get('numberOfDoctors').touched
+      }"
+      class="form-control"
+      placeholder="عداد الاطباء"
+      formControlName="numberOfDoctors"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+      hospitalForm.get('numberOfDoctors').touched &&
+      hospitalForm.get('numberOfDoctors').hasError('required')
+      "
+    >
+      الجاء ادخال اسم عداد الاطباء
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input
+      [ngClass]="{
+        'is-invalid':
+        hospitalForm.get('description').errors &&
+        hospitalForm.get('description').touched
+      }"
+      class="form-control"
+      placeholder="التوضيح"
+      formControlName="description"
+    />
+    <div
+      class="invalid-feedback"
+      *ngIf="
+      hospitalForm.get('description').touched &&
+      hospitalForm.get('description').hasError('required')
+      "
+    >
+     الرجاء ادخال اسم توضيح
+    </div>
+  </div>
+
+  <div class="form-group text-center">
+    <button
+      class="btn btn-success"
+      [disabled]="!hospitalForm.valid"
+      type="submit">
+      التسجيل
+    </button>
+
+  </div>
+</form>

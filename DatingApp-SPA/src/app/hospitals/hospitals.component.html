@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let hospital of hospitals">
+            <div  class="card" style="width: 18rem;">
+                <img class="card-img-top" src="../../assets/imgs/hospital.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{hospital.name}}</h5>
+                  <p class="card-text"> {{hospital.phone}}</p>
+                  <a href="#" class="btn btn-primary"[routerLink]="['/hospital/', hospital.id]">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+ 

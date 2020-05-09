@@ -55,6 +55,10 @@ import { AgGridModule } from 'ag-grid-angular';
 import { BlogsComponent } from './blogs/blogs.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorsResolverB } from './_resolvers/doctors.resolver';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { HospitalCreationComponent } from './hospitals/hospital-creation/hospital-creation.component';
+import { HospitalDetailsComponent } from './hospitals/hospital-details/hospital-details.component';
+import { AboutComponent } from './about/about.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -83,6 +87,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
       MessagesComponent,
       MemberCardComponent,
       MemberDetailComponent,
+      HospitalCreationComponent,
+      HospitalDetailsComponent,
       MemberEditComponent,
       PhotoEditorComponent,
       TimeAgoPipe,
@@ -94,7 +100,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
       RolesModalComponent,
       MemberFilterPipe,
       BlogsComponent,
-      DoctorsComponent
+      DoctorsComponent,
+      HospitalsComponent,
+      AboutComponent
    ],
    imports: [
       BrowserModule,

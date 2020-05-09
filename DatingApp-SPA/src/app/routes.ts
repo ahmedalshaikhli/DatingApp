@@ -15,6 +15,9 @@ import { MessagesResolver } from './_resolvers/messages.resolver';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorsResolverB } from './_resolvers/doctors.resolver';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { HospitalDetailsComponent } from './hospitals/hospital-details/hospital-details.component';
+import { AboutComponent } from './about/about.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -65,6 +68,22 @@ export const appRoutes: Routes = [
         path: 'app-doctors',
         component: DoctorsComponent,
         resolve: { users: DoctorsResolverB }
+      },
+      {
+        path: 'app-about',
+        component: AboutComponent
+      },
+      {
+        path: 'app-hospitals',
+        component: HospitalsComponent,
+      },
+      {
+        path: 'hospital/:id',
+        component: HospitalDetailsComponent
+      },
+      {
+        path: 'app-about',
+        component: AboutComponent
       }
     ]
   },
