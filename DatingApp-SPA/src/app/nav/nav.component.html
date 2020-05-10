@@ -1,5 +1,5 @@
-
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<!-- 
+ <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <a class="navbar-brand" [routerLink]="['/home']">
     المؤسسة العراقية للاطباء
   </a>
@@ -7,10 +7,10 @@
   <button class="navbar-toggler" type="button"
           (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> -->
 
 
-  <div class="collapse navbar-collapse"
+  <!-- <div class="collapse navbar-collapse"
        [ngClass]="{ 'show': navbarOpen }">
     <ul   class="navbar-nav mr-auto">
       <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
@@ -21,12 +21,12 @@
       </li>
       <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/messages']">الرسائل</a>
-      </li>
-      <!-- *appHasRole="['Admin', 'Moderator']"  -->
+      </li> -->
+    <!-- *appHasRole="['Admin', 'Moderator']"  
       <li *ngIf="loggedIn()" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/admin']">إدارة</a>
-      </li>
-      <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/admin']">إدارة</a> 
+      </li>-->
+      <!-- <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/app-doctors']">الاطباء</a>
       </li>
       <li *ngIf="!loggedIn()"class="nav-item" routerLinkActive="active">
@@ -36,11 +36,11 @@
         <a class="nav-link" [routerLink]="['/app-hospitals']">المستشفيات</a>
       </li>
    
-    </ul>
-    <div *ngIf="loggedIn()" class="dropdown" dropdown>
-      <!-- <span class="mr-1">
+    </ul> -->
+    <!-- <div *ngIf="loggedIn()" class="dropdown" dropdown>
+      <span class="mr-1">
           <img src="{{photoUrl || '../../assets/user.png'}}" alt="">
-        </span> -->
+        </span> 
     <a class="dropdown-toggle text-light" dropdownToggle>
       أهلا بك {{ authService.decodedToken?.unique_name | titlecase }}
     </a>
@@ -52,8 +52,8 @@
       <a class="dropdown-item" (click)="logout()">
         <i class="fa fa-sign-out"></i> تسجيل خروج</a>
     </div>
-  </div>
-  <form
+  </div> -->
+  <!-- <form
       *ngIf="!loggedIn()"
       #loginForm="ngForm"
       class="form-inline my-2 my-lg-0"
@@ -82,6 +82,306 @@
       >
         الدخول
       </button>
-    </form>
+    </form> 
   </div>
-</nav>
+</nav> 
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--Loader-->
+		<div id="global-loader">
+			<img alt="" class="loader-img" src="../assets/images/loader.svg">
+		</div>
+		<!--/Loader-->
+
+		<!-- Header-main -->
+		<div class="header-main">
+
+			<!-- Top Bar -->
+			<div class="top-bar">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-8 col-lg-8 col-sm-4 col-7">
+							<div class="top-bar-right d-flex">
+								<div class="clearfix">
+									<ul class="socials">
+										<li>
+											<a class="social-icon text-dark" href="#"><i class="fa fa-facebook"></i></a>
+										</li>
+										<li>
+											<a class="social-icon text-dark" href="#"><i class="fa fa-twitter"></i></a>
+										</li>
+										<li>
+											<a class="social-icon text-dark" href="#"><i class="fa fa-linkedin"></i></a>
+										</li>
+										<li>
+											<a class="social-icon text-dark" href="#"><i class="fa fa-google-plus"></i></a>
+										</li>
+									</ul>
+								</div>
+								<div class="clearfix">
+									<ul class="contact">
+										<li class="d-lg-none">
+											<a class="callnumber text-dark" href="#"><span><i class="fa fa-phone mr-1"></i>: +425 345 8765</span></a>
+										</li>
+
+										<li class="dropdown">
+											<a class="text-dark" data-toggle="dropdown" href="#"><span>اللغة <i class="fa fa-caret-down text-muted"></i></span></a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+												<a class="dropdown-item" href="#">English</a>
+												<a class="dropdown-item" href="#">Arabic</a>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-lg-4 col-sm-8 col-5">
+							<div class="top-bar-left">
+								<ul class="custom">
+									<li>
+										<a class="text-dark" href="register.html"><i class="fa fa-user ml-1"></i> <span>التسجيل</span></a>
+									</li>
+									<!-- <li>
+										<a class="text-dark" href="login.html"><i class="fa fa-sign-in ml-1"></i> <span>Login</span></a>
+									</li> -->
+									<!-- <li class="dropdown">
+										<a class="text-dark" data-toggle="dropdown" href="#"><i class="fa fa-home ml-1"></i> <span>My Dashboard</span></a>
+										<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+											<a class="dropdown-item" href="mydash.html"><i class="dropdown-icon icon icon-user"></i> My Profile</a> <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-speech"></i> Inbox</a> <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-bell"></i> Notifications</a> <a class="dropdown-item" href="mydash.html"><i class="dropdown-icon icon icon-settings"></i> Account Settings</a> <a class="dropdown-item" href="#"><i class="dropdown-icon icon icon-power"></i> Log out</a>
+										</div>
+									</li> -->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/Top Bar-->
+
+			<!--Header Search-->
+			<header class="header-search border-bottom p-2 bg-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-12">
+							<div class="header-search-logo d-none d-lg-block">
+								<a class="header-logo" href="index.html">
+									<img src="../assets/images/brand/logo.png" class="header-brand-img" alt="medlist logo">
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-12 header-support">
+							<ul class="hor-support float-left">
+								<li class="support-header">
+									<a href="#">
+										<i class="fa fa-phone"></i>
+										<div class="support-text">
+											<h6>+54255744324</h6>
+											<p>24/7 خدماتنا متاحة </p>
+										</div>
+									</a>
+								</li>
+								<li class="support-header">
+									<a href="#">
+										<i class="fa fa-envelope"></i>
+										<div class="support-text">
+											<h6>support@yourdomain.com</h6>
+											<p>مستعدون للاجابة عن اسئلتكم</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!--/Header Search-->
+
+			<!-- Horizontal Header -->
+			<div class="horizontal-header clearfix">
+				<div class="container">
+					<a class="animated-arrow" id="horizontal-navtoggle"><span></span></a>
+					<a class="smllogo" href="index.html">
+						<img alt="" src="../assets/images/brand/logo.png" width="120">
+					</a>
+					<a class="callusbtn" href="tel:245-6325-3256"><i aria-hidden="true" class="fa fa-phone"></i></a>
+				</div>
+			</div>
+			<!-- /Horizontal Header -->
+
+			<!-- Horizontal Menu -->
+			<div class="sticky">
+				<div class="header-style horizontal-main bg-dark-transparent clearfix">
+					<div class="horizontal-mainwrapper container clearfix">
+						<nav class="horizontalMenu clearfix d-md-flex">
+							<ul class="horizontalMenu-list">
+								<li aria-haspopup="true" class="li-list">
+									<a class="" href="#">الرئيسية <span class="fe fe-chevron-down"></span></a>
+									<ul class="sub-menu">
+										<li aria-haspopup="true" class="li-list"><a href="index.html">استشارات طبية</a></li>
+										<li aria-haspopup="true" class="li-list"><a href="index-text.html">الحياة الصحية</a></li>
+									</ul>
+									</li>
+									<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
+										<a [routerLink]="['/app-about']">من نحن</a>
+									</li>
+								<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
+									<a [routerLink]="['/app-doctors']">الاطباء</a>
+								</li>
+                				<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
+									<a [routerLink]="['/app-hospitals']">المستشفيات</a>
+								</li>
+								<li aria-haspopup="true">
+									<a href="#">اطباء اسنان <span class="fe fe-chevron-down"></span></a>
+									<div class="horizontal-megamenu clearfix">
+										<div class="container">
+											<div class="megamenu-content">
+												<div class="row">
+													<ul class="col link-list">
+														<li class="title">Listing  pages</li>
+														<li><a href="page-list.html">Page List</a></li>
+														<li><a href="page-list-right.html">Page List Right</a></li>
+														<li><a href="page-list-map.html">Page Map List</a></li>
+														<li><a href="page-list-map2.html">Page Map List 02</a></li>
+														<li><a href="page-list-map3.html">Page Map List 03</a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li aria-haspopup="true" class="li-list">
+									<a href="#">الاقسام <span class="fe fe-chevron-down"></span></a>
+									<ul class="sub-menu">
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">Hospitals <i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="hospitals-list.html">Hospital List</a></li>
+												<li><a href="hospitals-list-right.html">Hospital List Right</a></li>
+												<li><a href="hospital-details.html">Hospital Details</a></li>
+												<li><a href="hospital-details-02.html">Hospital Details 02</a></li>
+												<li><a href="hospital-details-right.html">Hospital Details Right</a></li>
+											</ul>
+										</li>
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">Doctors <i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="doctors-list.html">Doctors List</a></li>
+												<li><a href="doctors-list-right.html">Doctors List Right</a></li>
+												<li><a href="doctor-details.html">Doctor Details</a></li>
+												<li><a href="doctor-details2.html">Doctor Details 2</a></li>
+												<li><a href="doctor-details-right.html">Doctor Details Right</a></li>
+											</ul>
+										</li>
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">FitnessCenter<i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="fitness-list.html">Fitness List</a></li>
+												<li><a href="fitness-list-right.html">Fitness List Right</a></li>
+												<li><a href="fitness-details.html">Fitness Details</a></li>
+												<li><a href="fitness-details2.html">Fitness Details02</a></li>
+												<li><a href="fitness-details-right.html">Fitness Details Right</a></li>
+											</ul>
+										</li>
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">Pharmacy<i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="pharmacy-list.html">Pharmacy List</a></li>
+												<li><a href="pharmacy-list-right.html">Pharmacy List Right</a></li>
+												<li><a href="pharmacy-details.html">Pharmacy Details</a></li>
+												<li><a href="pharmacy-details2.html">Pharmacy Details02</a></li>
+												<li><a href="pharmacy-details-right.html">Pharmacy Details Right</a></li>
+											</ul>
+										</li>
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">BloodBank<i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="bloodbank-list.html">BloodBank List</a></li>
+												<li><a href="bloodbank-list-right.html">BloodBank List Right</a></li>
+												<li><a href="bloodbank-details.html">BloodBank Details</a></li>
+												<li><a href="bloodbank-details-right.html">BloodBank Details Right</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li aria-haspopup="true" class="li-list">
+									<a href="#">الاعلام <span class="fe fe-chevron-down"></span></a>
+									<ul class="sub-menu">
+										<li><a href="register.html">Register</a></li>
+										<li><a href="login.html">Login</a></li>
+										<li><a href="login-2.html">Login 02</a></li>
+										<li><a href="forgot.html">Forgot Password</a></li>
+										<li><a href="lockscreen.html">Lock Screen</a></li>
+										<li><a href="underconstruction.html">UnderConstruction</a></li>
+										<li><a href="404.html">404</a></li>
+									</ul>
+								</li>
+								<li aria-haspopup="true" class="li-list">
+									<a href="#">مختبرات <span class="fe fe-chevron-down"></span></a>
+									<ul class="sub-menu">
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">Blog Grid <i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="blog-grid.html">Blog Grid Left</a></li>
+												<li><a href="blog-grid-right.html">Blog Grid Right</a></li>
+												<li><a href="blog-grid-center.html">Blog Grid Center</a></li>
+											</ul>
+										</li>
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">Blog List <i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="blog-list.html">Blog List Left</a></li>
+												<li><a href="blog-list-right.html">Blog List Right</a></li>
+												<li><a href="blog-list-center.html">Blog List Center</a></li>
+											</ul>
+										</li>
+										<li aria-haspopup="true" class="li-list">
+											<a href="#">Blog Details <i class="fa fa-angle-left  float-left  mt-1 d-none d-lg-block"></i></a>
+											<ul class="sub-menu">
+												<li><a href="blog-details.html">Blog Details Left</a></li>
+												<li><a href="blog-details-right.html">Blog Details Right</a></li>
+												<li><a href="blog-details-center.html">Blog Details Center</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li aria-haspopup="true" class="li-list">
+									<a href="contact.html">تواصل معنا </a>
+								</li>
+								<li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
+									<span>
+										<a href="ad-posts.html" class="btn btn-secondary btn-block mb-lg-0"><i class="icon icon-plus mr-1 text-white"></i>Add Your Post</a>
+									</span>
+								</li>
+							</ul>
+							<ul class="mb-0">
+								<li aria-haspopup="true" class="d-none d-lg-block ">
+									<span>
+										<a href="ad-posts.html" class="btn btn-danger btn-block mb-lg-0">تواصل معنا <i class="fe fe-plus-circle ml-1 text-white"></i></a>
+									</span>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<!-- /Horizontal Menu -->
+
+		</div>
+		<!-- /Header-main -->
