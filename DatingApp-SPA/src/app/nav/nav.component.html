@@ -88,28 +88,6 @@
 
 -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!--Loader-->
-		<div id="global-loader">
-			<img alt="" class="loader-img" src="../assets/images/loader.svg">
-		</div>
-		<!--/Loader-->
-
 		<!-- Header-main -->
 		<div class="header-main">
 
@@ -247,25 +225,10 @@
                 				<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
 									<a [routerLink]="['/app-hospitals']">المستشفيات</a>
 								</li>
-								<li aria-haspopup="true">
-									<a href="#">اطباء اسنان <span class="fe fe-chevron-down"></span></a>
-									<div class="horizontal-megamenu clearfix">
-										<div class="container">
-											<div class="megamenu-content">
-												<div class="row">
-													<ul class="col link-list">
-														<li class="title">Listing  pages</li>
-														<li><a href="page-list.html">Page List</a></li>
-														<li><a href="page-list-right.html">Page List Right</a></li>
-														<li><a href="page-list-map.html">Page Map List</a></li>
-														<li><a href="page-list-map2.html">Page Map List 02</a></li>
-														<li><a href="page-list-map3.html">Page Map List 03</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
+								<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
+									<a [routerLink]="['/app-hospitals']">اطباء الاسنان</a>
 								</li>
+
 								<li aria-haspopup="true" class="li-list">
 									<a href="#">الاقسام <span class="fe fe-chevron-down"></span></a>
 									<ul class="sub-menu">
@@ -361,8 +324,8 @@
 										</li>
 									</ul>
 								</li>
-								<li aria-haspopup="true" class="li-list">
-									<a href="contact.html">تواصل معنا </a>
+								<li *ngIf="!loggedIn()" aria-haspopup="true" class="li-list">
+									<a [routerLink]="['/app-contact']">تواصل معنا </a>
 								</li>
 								<li aria-haspopup="true" class="d-lg-none mt-5 pb-5 mt-lg-0">
 									<span>
@@ -373,7 +336,7 @@
 							<ul class="mb-0">
 								<li aria-haspopup="true" class="d-none d-lg-block ">
 									<span>
-										<a href="ad-posts.html" class="btn btn-danger btn-block mb-lg-0">تواصل معنا <i class="fe fe-plus-circle ml-1 text-white"></i></a>
+										<a href="" class="btn btn-danger btn-block mb-lg-0"> اشترك معنا <i class="fe fe-plus-circle ml-1 text-white"></i></a>
 									</span>
 								</li>
 							</ul>

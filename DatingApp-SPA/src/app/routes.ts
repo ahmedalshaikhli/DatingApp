@@ -18,6 +18,7 @@ import { DoctorsResolverB } from './_resolvers/doctors.resolver';
 import { HospitalsComponent } from './hospitals/hospitals.component';
 import { HospitalDetailsComponent } from './hospitals/hospital-details/hospital-details.component';
 import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -84,6 +85,10 @@ export const appRoutes: Routes = [
       {
         path: 'app-about',
         component: AboutComponent
+      },
+      {
+        path: 'app-contact',
+        component: ContactComponent
       }
     ]
   },

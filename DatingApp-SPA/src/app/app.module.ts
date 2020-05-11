@@ -58,6 +58,8 @@ import { HospitalsComponent } from './hospitals/hospitals.component';
 import { HospitalCreationComponent } from './hospitals/hospital-creation/hospital-creation.component';
 import { HospitalDetailsComponent } from './hospitals/hospital-details/hospital-details.component';
 import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -100,7 +102,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
       MemberFilterPipe,
       DoctorsComponent,
       HospitalsComponent,
-      AboutComponent
+      AboutComponent,
+      ContactComponent,
+      FooterComponent
    ],
    imports: [
       BrowserModule,
