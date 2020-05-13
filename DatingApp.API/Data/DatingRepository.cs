@@ -203,5 +203,25 @@ namespace DatingApp.API.Data
         {
             throw new NotImplementedException();
         }
+
+        public Task<PagedList<Pharmacy>> GetPharmacies()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Hospital> GetPharmacy(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<PagedList<Hospital>> GetLaboratories()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Hospital> GetLaboratory(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

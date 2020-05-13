@@ -19,6 +19,11 @@ import { HospitalsComponent } from './hospitals/hospitals.component';
 import { HospitalDetailsComponent } from './hospitals/hospital-details/hospital-details.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { DoctorDetailsComponent } from './doctors/doctor-details/doctor-details.component';
+import { PharmacyComponent } from './pharmacy/pharmacy.component';
+import { LaboratoryComponent } from './laboratory/laboratory.component';
+import { LaboratoryDetailsComponent } from './laboratory/laboratory-details/laboratory-details.component';
+import { LoginComponent } from './login/login.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,6 +41,10 @@ export const appRoutes: Routes = [
         path: 'members/:id',
         component: MemberDetailComponent,
         resolve: { user: MemberDetailResolver }
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
       },
       {
         path: 'member/edit',
@@ -71,6 +80,10 @@ export const appRoutes: Routes = [
         resolve: { users: DoctorsResolverB }
       },
       {
+        path: 'doctors/:id',
+        component: DoctorDetailsComponent
+      },
+      {
         path: 'app-about',
         component: AboutComponent
       },
@@ -81,6 +94,18 @@ export const appRoutes: Routes = [
       {
         path: 'hospital/:id',
         component: HospitalDetailsComponent
+      },
+      {
+        path: 'app-pharmacies',
+        component: PharmacyComponent,
+      },
+      {
+        path: 'app-laboratories',
+        component: LaboratoryComponent,
+      },
+      {
+        path: 'laboratories/:id',
+        component: LaboratoryDetailsComponent
       },
       {
         path: 'app-about',

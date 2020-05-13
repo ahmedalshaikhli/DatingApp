@@ -29,7 +29,7 @@ namespace DatingApp.API.Controllers
 
 
        [AllowAnonymous]
-       [HttpGet("GetDoctors")]
+       [HttpGet]
         public async Task<IActionResult> GetDoctors([FromQuery]UserParams userParams)
         {
 
@@ -43,23 +43,23 @@ namespace DatingApp.API.Controllers
                 userParams.Gender = "male";
             }
     	  
-            var users = await _repo.GetDoctors(userParams);
+            var doctors = await _repo.GetDoctors(userParams);
 
-            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(doctors);
 
-            Response.AddPagination(users.CurrentPage, users.PageSize,
-                 users.TotalCount, users.TotalPages);
+            Response.AddPagination(doctors.CurrentPage, doctors.PageSize,
+                 doctors.TotalCount, doctors.TotalPages);
 
             return Ok(usersToReturn);
         }
         [AllowAnonymous]    
-        [HttpGet("{id}", Name = "GetDoctor")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetDoctorBeforeReg(int id)
         {
 
-            var user = await _repo.GetDoctor(id);
+            var doctor = await _repo.GetDoctor(id);
 
-            var userToReturn = _mapper.Map<UserForDetailedDto>(user);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(doctor);
 
             return Ok(userToReturn);
         }

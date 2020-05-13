@@ -29,7 +29,7 @@
 						<div class="row">
 							<div class="col-xl-9 col-lg-10 col-md-12 d-block mx-auto">
 								<div class="text-center text-white text-property">
-									<h1 class="">يوجد هناك  <span class="font-weight-bold">12,000+</span>مستشفى</h1>
+									<h1 class="">يوجد هناك  <span class="font-weight-bold">12,000+</span>مختبر</h1>
 								</div>
 								<div class="search-background bg-transparent">
 									<div class="form row no-gutters">
@@ -81,7 +81,7 @@
 		<div class="bg-white border-bottom">
 			<div class="container">
 				<div class="page-header">
-					<h4 class="page-title">قائمة المستشفيات </h4>
+					<h4 class="page-title">قائمة المختبرات </h4>
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="#">Categories</a></li>
 						<li class="breadcrumb-item"><a href="#">Hospitals</a></li>
@@ -127,7 +127,7 @@
 									</div>
 									<div class="tab-content">
 										<div class="tab-pane active" id="tab-11">
-											<div *ngFor="let hospital of hospitals" class="card overflow-hidden">
+											<div *ngFor="let laboratory of laboratories" class="card overflow-hidden">
 												<div class="d-md-flex">
 													<div class="item-card9-img">
 														<div class="item-card9-imgs"><a href="hospital-details.html"></a>
@@ -141,7 +141,7 @@
 															<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
 														</div>
 														<div class="item-overly-trans">
-															<span class="badge badge-info">Hospital</span>
+															<span class="badge badge-info">laboratory</span>
 															<div class="rating-stars d-flex">
 																<span class="text-white mr-1">4.3</span> <input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="4">
 																<div class="rating-stars-container">
@@ -168,7 +168,7 @@
 														<div class="card-body">
 															<div class="item-card9">
 																<a class="text-dark" href="hospital-details.html">
-																	<h4 class="font-weight-bold mt-1 mb-2">{{hospital.name}}<i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4>
+																	<h4 class="font-weight-bold mt-1 mb-2">{{laboratory.name}}<i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4>
 																</a>
 																<div class="item-card9-desc mb-2 mt-1">
 																	<span class="ml-4 float-right"><i class="fa fa-map-marker text-muted ml-1 icon-c float-right"></i> Hyderabad</span>
@@ -182,7 +182,7 @@
 														<div class="card-footer p-0">
 															<div class="item-card9-footer btn-appointment">
 																<div class="btn-group w-100">
-																	<a [routerLink]="['/hospital/', hospital.id]" class="btn btn-outline-light w-34 p-2 border-top-0 border-left-0 border-bottom-0">View Profile <i class="fe fe-eye ml-1 icon-h"></i></a>
+																	<a [routerLink]="['/laboratories/', laboratory.id]" class="btn btn-outline-light w-34 p-2 border-top-0 border-left-0 border-bottom-0">View Profile <i class="fe fe-eye ml-1 icon-h"></i></a>
 																	<a href="#" class="btn btn-outline-light w-33 p-2 border-top-0 border-left-0 border-bottom-0"><i class="fa fa-user-md ml-1"></i>Doctorslist</a>
 																	<a class="btn btn-outline-light w-34 p-2 border-top-0 border-left-0 border-bottom-0 call-btn">
 																		<div class="call-btn-1">
@@ -201,7 +201,7 @@
 										</div>
 										<div class="tab-pane" id="tab-12">
 											<div class="row">
-												<div *ngFor="let hospital of hospitals" class="col-lg-6 col-md-12 col-xl-4">
+												<div *ngFor="let laboratory of laboratories" class="col-lg-6 col-md-12 col-xl-4">
 													<div  class="card overflow-hidden">
 														<div class="item-card9-img">
 															<div class="item-card9-imgs">
@@ -238,13 +238,13 @@
 																</div>
 															</div>
 															<div class="item-overly-trans">
-																<span class="badge badge-info">Hospital</span>
+																<span class="badge badge-info">laboratory</span>
 															</div>
 														</div>
 														<div class="card-body">
 															<div class="item-card9">
 																<a class="text-dark mt-2" href="hospital-details.html">
-																<h4 class="font-weight-bold mb-1">{{hospital.name}}<i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<h4 class="font-weight-bold mb-1">{{laboratory.name}}<i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
 																<span class="text-muted fs-13 mt-0"><i class="fa fa-location-arrow text-muted ml-2"></i> 195 Prince St.Windermere</span>
 																<div class="mt-2 mb-0">
 																	<ul class="item-card-features mb-0">

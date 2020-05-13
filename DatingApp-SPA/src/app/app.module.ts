@@ -39,6 +39,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+
 import { ListsResolver } from './_resolvers/lists.resolver';
 
 import { MessagesResolver } from './_resolvers/messages.resolver';
@@ -60,6 +61,11 @@ import { HospitalDetailsComponent } from './hospitals/hospital-details/hospital-
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
+import { DoctorDetailsComponent } from './doctors/doctor-details/doctor-details.component';
+import { LaboratoryComponent } from './laboratory/laboratory.component';
+import { PharmacyComponent } from './pharmacy/pharmacy.component';
+import { LaboratoryDetailsComponent } from './laboratory/laboratory-details/laboratory-details.component';
+import { LoginComponent } from './login/login.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -101,10 +107,15 @@ export class CustomHammerConfig extends HammerGestureConfig {
       RolesModalComponent,
       MemberFilterPipe,
       DoctorsComponent,
+      DoctorDetailsComponent,
       HospitalsComponent,
       AboutComponent,
       ContactComponent,
-      FooterComponent
+      FooterComponent,
+      LaboratoryComponent,
+      LaboratoryDetailsComponent,
+      PharmacyComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,

@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { User } from '../_models/user';
-import { UserService } from '../_services/user.service';
+import { DoctorService } from '../_services/doctor.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pagination, PaginatedResult } from 'src/app/_models/pagination';
@@ -35,7 +35,7 @@ export class DoctorsComponent implements OnInit {
   pagination: Pagination;
 
   constructor(
-    private userService: UserService,
+    private doctorService: DoctorService,
     private alertify: AlertifyService,
     private route: ActivatedRoute
   ) {}
@@ -66,8 +66,8 @@ export class DoctorsComponent implements OnInit {
   }
 
   loadUsers() {
-    this.userService
-      .GetDoctorsBeforeReg(
+    this.doctorService
+      .GetDoctors(
         this.pagination.currentPage,
         this.pagination.itemsPerPage,
         this.userParams

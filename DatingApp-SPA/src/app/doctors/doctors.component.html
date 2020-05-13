@@ -1,79 +1,792 @@
 
-<div class="container mt-3">
-  <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
-    <!--   <div class="form-group">
-        <label for="minAge">Age From</label>
-        <input type="number" class="form-control ml-1" style="width: 70px" id="minAge"
-          [(ngModel)]="userParams.minAge" name="minAge">
-      </div>
+		<!--Sliders Section-->
+		<div>
+			<div class=" cover-image sptb-1 bg-background" data-image-src="../assets/images/banners/banner2.jpg">
+				<div class="header-text1 mb-0">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-9 col-lg-10 col-md-12 d-block mx-auto">
+								<div class="text-center text-white text-property">
+									<h1 class=""> يوجد هناك <span class="font-weight-bold">{{pagination.totalItems}}</span> طبيب</h1>
+								</div>
+								<div class="search-background bg-transparent">
+									<div class="form row no-gutters">
+										<div class="form-group col-xl-5 col-lg-5 col-md-12 select2-lg mb-0 bg-white">
+											
+											<select class="form-control select2-show-search border-bottom-0 w-100"  data-placeholder="Select"
+											  [(ngModel)]="userParams.specialist" name="specialist">
+											  
+											  <option *ngFor="let specialist of specialistList" [value]="specialist.value">
+												{{specialist.display}}
+											  </option>
+											</select>
+										
+									</div>
+										<div class="form-group col-xl-5 col-lg-5 col-md-12 select2-lg mb-0 bg-white">
+											
+											<select class="form-control select2-show-search border-bottom-0 w-100"  data-placeholder="Select"
+											[(ngModel)]="userParams.gender" name="gender">
+											  
+											<option *ngFor="let gender of genderList" [value]="gender.value">
+												{{gender.display}}
+											  </option>
+											</select>										
+									</div>
+		
+										<div class="col-xl-2 col-lg-2 col-md-12 mb-0">
+											<button class="btn btn-lg btn-block btn-dark br-tr-md-0 br-br-md-0" (click)="loadUsers()"> البحث </button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /header-text -->
+			</div>
+		</div>
+		<!--/Sliders Section-->
 
-      <div class="form-group px-2">
-        <label for="maxAge">Age To</label>
-        <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge"
-           [(ngModel)]="userParams.maxAge" name="maxAge">
-      </div> -->
-      <div class="col-md-3 col-sm-12 form-group" style="padding: 0;">
-        <label for="specialist">الاختصاص :  </label>
-        <select class="form-control select-res"  id="specialist"
-          [(ngModel)]="userParams.specialist" name="specialist">
-          <option *ngFor="let specialist of specialistList" [value]="specialist.value">
-            {{specialist.display}}
-          </option>
-        </select>
-      </div> 
+		<!--Breadcrumb-->
+		<div class="bg-white border-bottom">
+			<div class="container">
+				<div class="page-header">
+					<h4 class="page-title">قائمة الاطباء </h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">Categories</a></li>
+						<li class="breadcrumb-item"><a href="#">Doctors</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Doctor List</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<!--/Breadcrumb-->
 
-      <div class="col-md-3 col-sm-12 form-group">
-        <label for="gender">الجنس : </label>
-        <select class="form-control select-res" id="gender"
-          [(ngModel)]="userParams.gender" name="gender">
-          <option *ngFor="let gender of genderList" [value]="gender.value">
-            {{gender.display}}
-          </option>
-        </select>
-      </div>
-      <div class="col-md-3 col-sm-12"  style="padding: 0;">
-        <button type="button" class="btn btn-primary float-left" (click)="resetFilters()" >
-          مسح البحث
-        </button>
-        <button type="submit" class="btn btn-info float-left" style="margin-left:10px;">البحث</button>
-      </div>
- 
-    </form>
- 
-    <br>
-  <div class="row" style="margin-bottom:10px">
-      <div class="col-md-4">
-        <input type="text" placeholder="ابحث اسم طبيب" class = "form-control" style="width: 263px;" [(ngModel)]="searchTerm">
-      </div>
-      <div class="col-md-4">
-        <h3 style="text-align: center;">يوجد هناك {{pagination.totalItems}}- طبيب</h3>
-      </div>
-      <div class="col-md-4">
-        <!-- <div class="btn-group float-left">
-          <button type="button" name="orderBy" class="btn btn-primary"
-            [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="lastActive">آخر نشاط</button>
-          <button type="button" name="orderBy" class="btn btn-primary"
-            [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="created">الاطباء الجدد</button>
-        </div> -->
-      </div>
-  </div>
-   
-<div class="row">
-  <div *ngFor="let user of users | memberFilter:searchTerm" class="col-lg-2 col-md-3 col-sm-6">
-    <app-member-card [user]="user"></app-member-card>
-  </div>
-</div>
-</div>
+		<!--Section-->
+		<section class="sptb">
+			<div class="container">
+				<div class="row">
+					<!--Add lists-->
+					<div class="col-xl-9 col-lg-8 col-md-12">
+						<div class=" mb-lg-0">
+							<div class="">
+								<div class="item2-gl d-list">
+									<div class=" mb-0">
+										<div class="">
+											<div class="p-5 bg-white item2-gl-nav d-flex">
+												<h6 class="mb-0 mt-2">Showing 1 to 10 of 30 entries</h6>
+												<ul class="nav item2-gl-menu mr-auto">
+													<li class="">
+														<a href="#tab-11" class="active show" data-toggle="tab" title="List style"><i class="fa fa-list"></i></a>
+													</li>
+													<li>
+														<a href="#tab-12" data-toggle="tab" class="" title="Grid"><i class="fa fa-th"></i></a>
+													</li>
+												</ul>
+												<div class="d-flex select2-sm">
+													<label class="ml-2 mt-1 mb-sm-1">Sort By:</label>
+													<select name="item" class="form-control select2">
+														<option value="1">Latest</option>
+														<option value="2">Oldest</option>
+														<option value="3">Price:Low-to-High</option>
+														<option value="5">Price:Hight-to-Low</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tab-content">
+										<div class="tab-pane active" id="tab-11">
+											<div *ngFor="let user of users" class="card overflow-hidden">
+												<div class="d-md-flex">
+													<div class="item-card9-img doctor-details">
+														<div class="item-card9-imgs doctors">
+															<a href="doctor-details.html"></a>
+															<div class="power-ribbon power-ribbon-top-left text-warning"><span class="bg-warning"><i class="fa fa-bolt"></i></span></div>
+															<img alt="{{ user.knownAs }}" class="cover-image h-200" src="{{ user.photoUrl || '../../assets/user.png' }}">
+														</div>
+														<div class="item-card9-icons">
+															<a href="#" class="item-card9-icons1 item-icon-bg" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+															<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+														</div>
+														<div class="item-overly-trans">
+															<div class="rating-stars d-flex">
+																<span class="text-white mr-1"></span> <input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="3">
+																<div class="rating-stars-container">
+																	<div class="rating-star sm">
+																		<i class="fa fa-star"></i>
+																	</div>
+																	<div class="rating-star sm">
+																		<i class="fa fa-star"></i>
+																	</div>
+																	<div class="rating-star sm">
+																		<i class="fa fa-star"></i>
+																	</div>
+																	<div class="rating-star sm">
+																		<i class="fa fa-star"></i>
+																	</div>
+																	<div class="rating-star sm">
+																		<i class="fa fa-star"></i>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="card border-0 mb-0">
+														<div class="card-body">
+															<div class="item-card9">
+																<span class="badge badge-dark fs-12 mb-2"> {{user.specialist}}</span>
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mt-1 mb-1"> {{user.knownAs}}<i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, MD, DM, Ph.D</span>
+																<div class="item-card9-desc mb-0 mt-2">
+																	<span class="ml-4 float-right"><i class="fa fa-map-marker text-muted ml-1 icon-c float-right"></i> Banglore</span>
+																	<span class="ml-4 float-right"><i class="fe fe-briefcase text-muted ml-1 mt-1 float-right"></i>5 Years Experience</span>
+																	<span class="ml-4 float-right"><i class="fa fa-hospital-o text-muted ml-1 icon-c float-right"></i>3 Hospitals</span>
+																	<span class="ml-4"><i class="fe fe-phone text-muted ml-1 icon-c float-right"></i>+1-202-555-0108</span>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0">
+															<div class="item-card9-footer btn-appointment">
+																<div class="btn-group w-100">
+																	<a href="#" class="btn btn-outline-light w-34 p-2 border-top-0 border-left-0 border-bottom-0">Ask a Doctor<i class="fe fe-help-circle ml-1 icon-h"></i></a>
+																	<a  [routerLink]="['/doctors/', user.id]" class="btn btn-outline-light w-33 p-2 border-top-0 border-left-0 border-bottom-0">View Profile<i class="fe fe-eye  ml-1 icon-h"></i></a>
+																	<a href="#" class="btn btn-outline-light w-34 p-2 border-top-0 border-left-0 border-bottom-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone  ml-1 icon-h"></i></a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane" id="tab-12">
+											<div class="row">
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<div class="power-ribbon power-ribbon-top-left text-warning"><span class="bg-warning"><i class="fa fa-bolt"></i></span></div>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/2.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1">3.3</span> <input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="3">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Dermatologists</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.S. Elizabeth.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, Ph.D</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i> Hyderabad</span></li>
+																		<li><span><i class="fe fe-briefcase ml-1 float-right text-muted icon-c"></i>5yrs Exp</span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 3 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Fri </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<div class="power-ribbon power-ribbon-top-left text-warning"><span class="bg-warning"><i class="fa fa-bolt"></i></span></div>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/1.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg active" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1"></span> <input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="5">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Cardiologist</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.K.Jones.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, Ph.D</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i>Bangalore</span></li>
+																		<li><span><i class="fe fe-briefcase ml-1 float-right text-muted icon-c"></i>11yrs Exp</span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 5 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Wed </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/3.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1"></span> <input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="5">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Infertility Specialist</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.T.Laytoya Thoma.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, MD, DM, Ph.D</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i>Hyderabad</span></li>
+																		<li><span>6yrs Exp <i class="fe fe-briefcase ml-1 text-muted icon-c"></i></span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 4 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Sat </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/4.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg active" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1"></span> <input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="4">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Dentist</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.S.Grace.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, MD, DM</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i>Chennai</span></li>
+																		<li><span><i class="fe fe-briefcase ml-1 float-right text-muted icon-c"></i>3yrs Exp</span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 2 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Thurs </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<div class="power-ribbon power-ribbon-top-left text-warning"><span class="bg-warning"><i class="fa fa-bolt"></i></span></div>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/5.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1"></span> <input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="3">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Epidemiologist</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.K.John Coldwell.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, MD, DM</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i>USA</span></li>
+																		<li><span>6yrs Exp <i class="fe fe-briefcase ml-1 text-muted icon-c"></i></span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 3 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Thurs </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/6.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1"></span><input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="2">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Neurosurgeon</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.L.Rickie Smtih.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, MD, DM, FAMS</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i>Hyderabad</span></li>
+																		<li><span><i class="fe fe-briefcase ml-1 float-right text-muted icon-c"></i>10yrs Exp</span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 5 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Thurs </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<div class="power-ribbon power-ribbon-top-left text-warning"><span class="bg-warning"><i class="fa fa-bolt"></i></span></div>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/7.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg active" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1"></span><input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="3">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Orthopedic surgeon</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.S.Mary.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, MD, DM, FAMS</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i>Bangalore</span></li>
+																		<li><span>6yrs Exp <i class="fe fe-briefcase ml-1 text-muted icon-c"></i></span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 3 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Thurs </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-6 col-md-6 col-xl-4">
+													<div class="card overflow-hidden">
+														<div class="item-card9-img">
+															<div class="item-card9-imgs">
+																<a href="doctor-details.html"></a>
+																<div class="power-ribbon power-ribbon-top-left text-warning"><span class="bg-warning"><i class="fa fa-bolt"></i></span></div>
+																<img alt="img" class="cover-image" src="../assets/images/media/doctors/8.jpg">
+															</div>
+															<div class="item-card9-icons">
+																<a href="#" class="item-card9-icons1 item-icon-bg" data-toggle="tooltip" title="" data-original-title="wishlist"><i class="fa fa fa-heart-o"></i></a>
+																<a href="#" class="item-card9-icons1 bg-purple" data-toggle="tooltip" title="" data-original-title="Share"><i class="fa fa-share-alt"></i></a>
+															</div>
+															<div class="item-overly-trans">
+																<div class="rating-stars d-flex">
+																	<span class="text-white mr-1"></span><input class="rating-value star" name="rating-stars-value" readonly="readonly" type="number" value="5">
+																	<div class="rating-stars-container">
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																		<div class="rating-star sm ">
+																			<i class="fa fa-star"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="item-overly-trans">
+																<span class="badge badge-dark">Gynecologist</span>
+															</div>
+														</div>
+														<div class="card-body">
+															<div class="item-card9">
+																<a class="text-dark" href="doctor-details.html">
+																<h4 class="font-weight-bold mb-1">Dr.S.Mary.... <i class="ion-checkmark-circled  text-success fs-14 mr-1"></i></h4></a>
+																<span class="text-muted fs-13 mt-0"><i class="fa fa-user-md text-muted ml-2"></i>MBBS, MD, DM, Ph.D</span>
+																<div class="mb-0 mt-2">
+																	<ul class="item-card-features mb-0">
+																		<li><span><i class="fa fa-map-marker ml-1 text-muted"></i>Bangalore</span></li>
+																		<li><span><i class="fe fe-briefcase ml-1 float-right text-muted icon-c"></i>10yrs Exp</span></li>
+																		<li class="mb-0"><span><i class="fa fa-hospital-o ml-1 text-muted"></i> 5 Hospitals</span></li>
+																		<li><span><i class="fa fa-calendar-o ml-1 text-muted"></i>Mon - Sat </span></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+														<div class="card-footer p-0 btn-appointment">
+															<div class="btn-group w-100">
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0 border-right-0" href="doctor-details.html">Visit Website <i class="fe fe-eye ml-1 icon-h"></i></a>
+																<a class="w-50 btn btn-outline-light p-2 border-top-0 border-bottom-0 border-left-0" data-target="#exampleModal" data-toggle="modal">Appointment <i class="fe fe-phone ml-1"></i></a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<pagination
+								[boundaryLinks]="true"
+								[totalItems]="pagination.totalItems"
+								[(ngModel)]="pagination.currentPage"
+								[itemsPerPage]="pagination.itemsPerPage"
+								(pageChanged)="pageChanged($event)"
+							  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+							
+							</pagination>
+							</div>
+						</div>
+					</div>
+					<!--/Add lists-->
+					<!--Right Side Content-->
+					<div class="col-xl-3 col-lg-4 col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Categories</h3>
+							</div>
+							<div class="card-body">
+								<div class="" id="container">
+									<div class="filter-product-checkboxs">
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox1" value="option1">
+											<span class="custom-control-label">
+												<span class="text-dark">Cardiologist<span class="label label-light float-left">14</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox2" value="option2">
+											<span class="custom-control-label">
+												<span class="text-dark">Gynecologist<span class="label label-light float-left">22</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox3" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">physiologist<span class="label label-light float-left">78</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox4" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">Neurologist<span class="label label-light float-left">35</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox5" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">Neurosurgeon<span class="label label-light float-left">23</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox6" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">Dermatologist<span class="label label-light float-left">14</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox7" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">Dentist<span class="label label-light float-left">45</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox7" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">ENT surgeon<span class="label label-light float-left">34</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox7" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">Infertility Spacialist<span class="label label-light float-left">12</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox7" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">Orthopedic surgeon<span class="label label-light float-left">18</span></span>
+											</span>
+										</label>
+										<label class="custom-control custom-checkbox mb-3">
+											<input type="checkbox" class="custom-control-input" name="checkbox7" value="option3">
+											<span class="custom-control-label">
+												<span class="text-dark">Epidemiologist<span class="label label-light float-left">02</span></span>
+											</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="card-header border-top">
+								<h3 class="card-title">Rating</h3>
+							</div>
+							<div class="card-body">
+								<select id="inputState" class="form-control nice-select">
+									<option>1 Star and higher</option>
+									<option>2 Star and higher</option>
+									<option>3 Star and higher</option>
+									<option>4 Star and higher</option>
+									<option>5 Star and higher</option>
+								</select>
+							</div>
+							<div class="card-header border-top">
+								<h3 class="card-title">Fees Range</h3>
+							</div>
+							<div class="card-body">
+								<h6>
+								   <label for="price">Fees Range:</label>
+								   <input type="text" id="price">
+								</h6>
+								<div id="mySlider"></div>
+							</div>
+							<div class="card-footer">
+								<a href="#" class="btn btn-secondary btn-block">Apply Filter</a>
+							</div>
+						</div>
+						<div class="card mb-0">
+							<div class="card-header">
+								<h3 class="card-title">Shares</h3>
+							</div>
+							<div class="card-body product-filter-desc">
+								<div class="product-filter-icons text-center">
+									<a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a>
+									<a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a>
+									<a href="#" class="google-bg"><i class="fa fa-google"></i></a>
+									<a href="#" class="dribbble-bg"><i class="fa fa-dribbble"></i></a>
+									<a href="#" class="pinterest-bg"><i class="fa fa-pinterest"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--/Right Side Content-->
+				</div>
+			</div>
+		</section>
+		<!--/Section-->
 
 
-<div class="d-flex justify-content-center">
-<pagination
-    [boundaryLinks]="true"
-    [totalItems]="pagination.totalItems"
-    [(ngModel)]="pagination.currentPage"
-    [itemsPerPage]="pagination.itemsPerPage"
-    (pageChanged)="pageChanged($event)"
-  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
-
-</pagination>
-</div>

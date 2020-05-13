@@ -20,6 +20,10 @@ namespace DatingApp.API.Data
         Task<Message> GetMessage(int id);
          Task<PagedList<Hospital>> GetHospitals();
         Task<Hospital> GetHospital(int id);
+        Task<PagedList<Pharmacy>> GetPharmacies();
+        Task<Hospital> GetPharmacy(int id);
+        Task<PagedList<Hospital>> GetLaboratories();
+        Task<Hospital> GetLaboratory(int id);
 
         Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams);
         Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId);

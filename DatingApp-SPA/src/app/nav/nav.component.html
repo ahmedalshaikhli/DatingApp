@@ -53,40 +53,9 @@
         <i class="fa fa-sign-out"></i> تسجيل خروج</a>
     </div>
   </div> -->
-  <!-- <form
-      *ngIf="!loggedIn()"
-      #loginForm="ngForm"
-      class="form-inline my-2 my-lg-0"
-      (ngSubmit)="login()"
-    >
-      <input
-        class="form-control mr-sm-2"
-        type="text"
-        placeholder="Username"
-        name="username"
-        required
-        [(ngModel)]="model.username"
-      />
-      <input
-        class="form-control mr-sm-2"
-        type="password"
-        placeholder="Password"
-        name="password"
-        required
-        [(ngModel)]="model.password"
-      />
-      <button
-        [disabled]="!loginForm.valid"
-        class="btn btn-success my-2 my-sm-0"
-        type="submit"
-      >
-        الدخول
-      </button>
-    </form> 
-  </div>
-</nav> 
 
--->
+
+
 
 		<!-- Header-main -->
 		<div class="header-main">
@@ -133,12 +102,21 @@
 						<div class="col-xl-4 col-lg-4 col-sm-8 col-5">
 							<div class="top-bar-left">
 								<ul class="custom">
-									<li>
+									<li *ngIf="!loggedIn()">
 										<a class="text-dark" href="register.html"><i class="fa fa-user ml-1"></i> <span>التسجيل</span></a>
 									</li>
-									<!-- <li>
-										<a class="text-dark" href="login.html"><i class="fa fa-sign-in ml-1"></i> <span>Login</span></a>
-									</li> -->
+									<li  *ngIf="!loggedIn()">
+										<a class="text-dark" [routerLink]="['/login']"><i class="fa fa-sign-in ml-1"></i> <span>الدخول</span></a>
+									</li> 
+									<li  *ngIf="loggedIn()">
+										<a class="text-dark" > <i class="fa fa-user ml-1"></i><span>   اهلا وسهلا بك {{ authService.decodedToken?.unique_name | titlecase }} </span></a>
+									</li> 
+									<li  *ngIf="loggedIn()">
+										<a class="text-dark" (click)="logout()"><i class="fa fa-sign-out ml-1"></i> <span>الخروج</span></a>
+									</li> 
+
+
+		
 									<!-- <li class="dropdown">
 										<a class="text-dark" data-toggle="dropdown" href="#"><i class="fa fa-home ml-1"></i> <span>My Dashboard</span></a>
 										<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -216,19 +194,26 @@
 										<li aria-haspopup="true" class="li-list"><a href="index-text.html">الحياة الصحية</a></li>
 									</ul>
 									</li>
-									<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
+									<li  aria-haspopup="true" class="li-list">
 										<a [routerLink]="['/app-about']">من نحن</a>
 									</li>
-								<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
+								<li  aria-haspopup="true" class="li-list">
 									<a [routerLink]="['/app-doctors']">الاطباء</a>
 								</li>
-                				<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
+                				<li  aria-haspopup="true" class="li-list">
 									<a [routerLink]="['/app-hospitals']">المستشفيات</a>
 								</li>
-								<li *ngIf="!loggedIn()"  aria-haspopup="true" class="li-list">
-									<a [routerLink]="['/app-hospitals']">اطباء الاسنان</a>
+								<li  aria-haspopup="true" class="li-list">
+									<a [routerLink]="['/app-laboratories']">مختبرات</a>
 								</li>
-
+								<li  aria-haspopup="true" class="li-list">
+									<a [routerLink]="['/app-pharmacies']">الصيدليات</a>
+								</li>
+								<li *ngIf="loggedIn()"   aria-haspopup="true" class="li-list">
+									<a *appHasRole="['Admin', 'Moderator']" [routerLink]="['/admin']">إدارة</a>
+								</li>
+					
+			
 								<li aria-haspopup="true" class="li-list">
 									<a href="#">الاقسام <span class="fe fe-chevron-down"></span></a>
 									<ul class="sub-menu">
@@ -295,7 +280,8 @@
 										<li><a href="404.html">404</a></li>
 									</ul>
 								</li>
-								<li aria-haspopup="true" class="li-list">
+						
+								<!-- <li aria-haspopup="true" class="li-list">
 									<a href="#">مختبرات <span class="fe fe-chevron-down"></span></a>
 									<ul class="sub-menu">
 										<li aria-haspopup="true" class="li-list">
@@ -323,7 +309,7 @@
 											</ul>
 										</li>
 									</ul>
-								</li>
+								</li> -->
 								<li *ngIf="!loggedIn()" aria-haspopup="true" class="li-list">
 									<a [routerLink]="['/app-contact']">تواصل معنا </a>
 								</li>
