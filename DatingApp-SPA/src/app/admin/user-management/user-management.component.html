@@ -7,7 +7,7 @@
     >
     
 </ag-grid-angular> -->
-<div class="row"> 
+<!-- <div class="row"> 
   <table class="table table-bordered">
     <tr>
       <th style="width: 10%">رقم العضوية</th>
@@ -22,4 +22,59 @@
       <td><button class="btn btn-info" (click)="editRolesModal(user)">تعديل الدور</button></td>
     </tr>
   </table>
-</div>
+</div> -->
+
+
+		 
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="table-responsive border-top userprof-tab">
+											<table class="table table-bordered table-hover mb-0 text-nowrap">
+												<thead>
+													<tr>
+														<th>الاسم</th>
+														<th>الدور </th>
+														<th>الرقم</th>
+														<th>دور</th>
+														<th>Ad Status</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let user of users">
+														<td>
+															<div class="media mt-0 mb-0">
+																<div class="card-aside-img">
+																	<a href="#"></a>
+																	<img src="../assets/images/media/4.jpg" alt="img">
+																</div>
+																<div class="media-body">
+																	<div class="card-item-desc mr-4 p-0 mt-2">
+																		<a href="#" class="text-dark"><h4 class="font-weight-semibold">{{user.userName}}</h4></a>
+																		<a href="#"><i class="fa fa-clock-o ml-1"></i> Feb-21-2018 , 16:54</a>
+																	</div>
+																</div>
+															</div>
+														</td>
+														<td>{{user.roles}}</td>
+														<td class="font-weight-semibold fs-16">$54</td>
+														<td>
+															<a href="#" class="badge badge-warning">Published</a>
+														</td>
+														<td>
+															<a class="btn btn-success btn-sm text-white" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+															<a class="btn btn-danger btn-sm text-white" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+															<a class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="Save to Wishlist"><i class="fa fa-heart-o"></i></a>
+															<a class="btn btn-primary btn-sm text-white" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye"></i></a>
+														</td>
+													</tr>
+						
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+
+       

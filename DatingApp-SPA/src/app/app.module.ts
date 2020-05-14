@@ -66,6 +66,9 @@ import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { LaboratoryDetailsComponent } from './laboratory/laboratory-details/laboratory-details.component';
 import { LoginComponent } from './login/login.component';
+import { FaqComponent } from './faq/faq.component';
+import { PharmacyCreationComponent } from './pharmacy/pharmacy-creation/pharmacy-creation.component';
+import { LaboratoryCreationComponent } from './laboratory/laboratory-creation/laboratory-creation.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -114,8 +117,11 @@ export class CustomHammerConfig extends HammerGestureConfig {
       FooterComponent,
       LaboratoryComponent,
       LaboratoryDetailsComponent,
+      LaboratoryCreationComponent,
       PharmacyComponent,
-      LoginComponent
+      PharmacyCreationComponent,
+      LoginComponent,
+      FaqComponent
    ],
    imports: [
       BrowserModule,

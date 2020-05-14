@@ -209,6 +209,9 @@
 								<li  aria-haspopup="true" class="li-list">
 									<a [routerLink]="['/app-pharmacies']">الصيدليات</a>
 								</li>
+								<li  aria-haspopup="true" class="li-list">
+									<a [routerLink]="['/faq']">الاسئلة المتكررة</a>
+								</li>
 								<li *ngIf="loggedIn()"   aria-haspopup="true" class="li-list">
 									<a *appHasRole="['Admin', 'Moderator']" [routerLink]="['/admin']">إدارة</a>
 								</li>

@@ -2,24 +2,24 @@
   <div class="col-md-12">
     <div class="card m-b-20">
       <div class="card-body">
-        <form [formGroup]="laboratoryForm" (ngSubmit)="createLaboratory()">
+        <form [formGroup]="pharmacyForm" (ngSubmit)="createPharmacy()">
           <div class="form-row">
             <div class="form-group col-md-6">
               <div class="form-group">
-                <label class="form-label" for="exampleInputEmail1"> اسم المختبر</label>
+                <label class="form-label" for="exampleInputEmail1"> اسم الصيدلية</label>
                 <input   
                 [ngClass]="{
                   'is-invalid':
-                  laboratoryForm.get('name').errors &&
-                  laboratoryForm.get('name').touched
+                  pharmacyForm.get('name').errors &&
+                  pharmacyForm.get('name').touched
                 }"
-                type="text" class="form-control" id="name1"  formControlName="name" placeholder="ادخل اسم المختبر">
+                type="text" class="form-control" id="name1"  formControlName="name" placeholder="ادخل اسم الصيدلية">
                 <div
                 class="invalid-feedback"
                 *ngIf="
-                laboratoryForm.get('name').touched &&
-                laboratoryForm.get('name').hasError('required')">
-               الرجاء ادخال المختبر
+                pharmacyForm.get('name').touched &&
+                pharmacyForm.get('name').hasError('required')">
+               الرجاء ادخال الصيدلية
                  </div>
               </div>
               
@@ -30,15 +30,15 @@
                 <input   
                 [ngClass]="{
                   'is-invalid':
-                  laboratoryForm.get('phone').errors &&
-                  laboratoryForm.get('phone').touched
+                  pharmacyForm.get('phone').errors &&
+                  pharmacyForm.get('phone').touched
                 }"
                 type="text" class="form-control" id="name2"  formControlName="phone" placeholder="ادخل رقم الهاتف">
                 <div
                 class="invalid-feedback"
                 *ngIf="
-                laboratoryForm.get('phone').touched &&
-                laboratoryForm.get('phone').hasError('required')">
+                pharmacyForm.get('phone').touched &&
+                pharmacyForm.get('phone').hasError('required')">
           الرجاء ادخال رقم الهاتف"</div>
                 
               </div>
@@ -86,21 +86,21 @@
             <textarea 
             [ngClass]="{
               'is-invalid':
-              laboratoryForm.get('description').errors &&
-              laboratoryForm.get('description').touched
+              pharmacyForm.get('description').errors &&
+              pharmacyForm.get('description').touched
             }"
             class="form-control" formControlName="description" rows="4" placeholder="التوضيح"></textarea>
             <div
             class="invalid-feedback"
             *ngIf="
-            laboratoryForm.get('description').touched &&
-            laboratoryForm.get('description').hasError('required')
+            pharmacyForm.get('description').touched &&
+            pharmacyForm.get('description').hasError('required')
             "
           >
            الرجاء ادخال توضيح
           </div>
           </div>
-          <button type="submit" [disabled]="!laboratoryForm.valid" class="btn btn-success ">اضافة</button>
+          <button type="submit" [disabled]="!pharmacyForm.valid" class="btn btn-success ">اضافة</button>
         </form>
       </div>
     </div>

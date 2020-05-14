@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
+<!-- <form [formGroup]="registerForm" (ngSubmit)="register()">
  
   
 
@@ -229,4 +229,298 @@
     </button>
 
   </div>
-</form>
+</form> -->
+
+
+
+
+
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="card-body">
+										<form class="form-horizontal"  [formGroup]="registerForm" (ngSubmit)="register()">
+											<div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2" id="examplenameInputname2">الجنس:  <i></i></label>
+													</div>
+													<div class="col-md-9">
+                            <select type="text" 
+                            class="form-control" formControlName="gender" id="examplenameInputname3" placeholder="الجنس">
+                            <option value="male">ذكر</option>
+                            <option value="female">انثى</option>
+                          </select>
+													</div>
+												</div>
+                      </div>
+                      <div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2" id="examplenameInputname2">سم العضو  <i></i></label>
+													</div>
+													<div class="col-md-9">
+                            <input
+                            [ngClass]="{
+                              'is-invalid':
+                                registerForm.get('username').errors &&
+                                registerForm.get('username').touched
+                            }"
+                             type="text"  class="form-control" formControlName="username" id="examplenameInputname3" placeholder="اسم العضو">
+                             <div
+                             class="invalid-feedback"
+                             *ngIf="
+                               registerForm.get('username').touched &&
+                               registerForm.get('username').hasError('required')">
+                            الرجاء ادخال اسم العضو
+                           </div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2" id="knownAs"> الكنية <i></i></label>
+													</div>
+													<div class="col-md-9">
+                            <input      
+                            [ngClass]="{
+                              'is-invalid':
+                                registerForm.get('knownAs').errors &&
+                                registerForm.get('knownAs').touched
+                            }"
+                            type="text" class="form-control" formControlName="knownAs" id="knownAs"  placeholder="الكنية">
+                            <div
+                            class="invalid-feedback"
+                            *ngIf="
+                              registerForm.get('knownAs').touched &&
+                              registerForm.get('knownAs').hasError('required')">
+                           الرجاء ادخال الكنية
+                          </div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2">التخصص</label>
+													</div>
+													<div class="col-md-9">
+                            <select
+                            [ngClass]="{
+                              'is-invalid':
+                                registerForm.get('specialist').errors &&
+                                registerForm.get('specialist').touched
+                            }"
+                             type="text" class="form-control" formControlName="specialist" placeholder="التخصص">
+                             <option value="Childneurology">Childneurology</option>
+                             <option value="Sportsmedicine">Sportsmedicine</option>
+                             <option value="Nephrology">Nephrology</option>
+                             <option value="Otolaryngology">Otolaryngology</option>
+
+                             </select>
+                             <div
+                                class="invalid-feedback"
+                                *ngIf="
+                                  registerForm.get('specialist').touched &&
+                                  registerForm.get('specialist').hasError('required')">
+                          الرجاء ادخال التخصص    </div>
+													</div>
+												</div>
+                      </div>
+                      
+                      
+											<div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2">الميلاد</label>
+													</div>
+													<div class="col-md-9">
+                            <input 
+                            [ngClass]="{
+                              'is-invalid':
+                                registerForm.get('dateOfBirth').errors &&
+                                registerForm.get('dateOfBirth').touched
+                            }"
+                            type="text" bsDatepicker [bsConfig]="bsConfig" formControlName="dateOfBirth" class="form-control"    placeholder="تاريخ الميلاد">
+                            <div
+                            class="invalid-feedback"
+                            *ngIf="
+                              registerForm.get('dateOfBirth').touched &&
+                              registerForm.get('dateOfBirth').hasError('required') ">
+                            الرجاء ادخال تاريخ الميلاد
+                          </div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2">المدينة</label>
+													</div>
+													<div class="col-md-9">
+                            <input 
+                            [ngClass]="{
+                              'is-invalid':
+                                registerForm.get('city').errors && registerForm.get('city').touched
+                            }"
+                            type="text" class="form-control"   formControlName="city"  placeholder="المدينة">
+                            <div
+                            class="invalid-feedback"
+                            *ngIf="
+                              registerForm.get('city').touched &&
+                              registerForm.get('city').hasError('required')
+                            "
+                          >
+                            الجاء ادخال اسم المدينة
+                          </div>
+													</div>
+												</div>
+                      </div>
+                      <div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2">البلد</label>
+													</div>
+													<div class="col-md-9">
+                            <input 
+                            [ngClass]="{
+                              'is-invalid':
+                                registerForm.get('country').errors && registerForm.get('country').touched
+                            }"
+                            type="text" class="form-control"   formControlName="country"   placeholder="البلد">
+                            <div
+                            class="invalid-feedback"
+                            *ngIf="
+                              registerForm.get('country').touched &&
+                              registerForm.get('country').hasError('required')
+                            "
+                          >
+                            الجاء ادخال اسم البلد
+                          </div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2">كلمة السر</label>
+													</div>
+													<div class="col-md-9">
+                            <input 
+                            [ngClass]="{
+                              'is-invalid':
+                                registerForm.get('password').errors &&
+                                registerForm.get('password').touched
+                            }"
+                            type="password"    formControlName="password" class="form-control"  placeholder="كلمة السر">
+                            <div
+                            class="invalid-feedback"
+                            *ngIf="
+                              registerForm.get('password').hasError('required') &&
+                              registerForm.get('password').touched
+                            " >
+                            الرجاء ادخال كلمة السر
+                          </div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2">اعادة كلمة السر</label>
+													</div>
+													<div class="col-md-9">
+                            <input
+                            [ngClass]="{
+                              'is-invalid':
+                                (registerForm.get('confirmPassword').errors &&
+                                  registerForm.get('confirmPassword').touched) ||
+                                (registerForm.get('confirmPassword').touched &&
+                                  registerForm.hasError('mismatch'))
+                            }"
+                             type="password" class="form-control" formControlName="confirmPassword" placeholder="اعادة كلمة السر">
+                             <div
+                              class="invalid-feedback"
+                              *ngIf="
+                                registerForm.hasError('mismatch') &&
+                                registerForm.get('confirmPassword').touched
+                              "
+                            >
+                            الكلمة السريه يجب ان تتطابق
+                            </div>
+													</div>
+												</div>
+											</div>
+
+											<!-- <div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label">Role</label>
+													</div>
+													<div class="col-md-9">
+														<select class="form-control">
+															<option selected="">Administrator</option>
+															<option>HR</option>
+															<option>Contributor</option>
+															<option>Employ</option>
+															<option>Accountant</option>
+															<option>CEO</option>
+															<option>Director</option>
+														</select>
+													</div>
+												</div>
+											</div> -->
+											<!-- <div class="form-group ">
+												<div class="row">
+													<div class="col-md-3">
+														<label class="form-label mt-2">Profile Avatar</label>
+													</div>
+													<div class="col-md-9">
+														<div class="form-group">
+															<div class="custom-file">
+																<input type="file" class="custom-file-input" name="example-file-input-custom">
+																<label class="custom-file-label">Upload Images</label>
+															</div>
+														</div>
+														<div class="p-2 border mb-4">
+															<div class="upload-images d-flex">
+																<div>
+																	<img src="../assets/images/users/male/25.jpg" alt="img" class="w73 h73 border p-0">
+																</div>
+																<div class="mr-3 mt-2">
+																	<h6 class="mb-0 mt-3 font-weight-bold">25.jpg</h6>
+																	<small>4.5kb</small>
+																</div>
+																<div class="float-left mr-auto">
+																	<a href="#" class="float-right btn btn-icon btn-danger btn-sm mt-5"><i class="fa fa-trash-o"></i></a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div> -->
+											<div class="form-group mb-0 row justify-content-end">
+												<div class="col-md-3">
+													<button type="submit"  [disabled]="!registerForm.valid" class="btn btn-success waves-effect waves-light">التسجيل</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+				<!--App-Content-->
+
+
+
+
+
+
+
+
+
+
+

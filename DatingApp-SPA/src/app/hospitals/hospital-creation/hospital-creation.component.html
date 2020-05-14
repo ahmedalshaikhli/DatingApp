@@ -1,4 +1,4 @@
-<form [formGroup]="hospitalForm" (ngSubmit)="register()">
+<!-- <form [formGroup]="hospitalForm" (ngSubmit)="register()">
 
   <div class="form-group">
     <input
@@ -91,4 +91,125 @@
     </button>
 
   </div>
-</form>
+</form> -->
+
+
+
+		
+						<!-- end row -->
+						 <div class="row">
+							<div class="col-md-12">
+								<div class="card m-b-20">
+									<div class="card-body">
+										<form [formGroup]="hospitalForm" (ngSubmit)="createHospital()">
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													<div class="form-group">
+														<label class="form-label" for="exampleInputEmail1"> اسم المستشفى</label>
+                            <input   
+                            [ngClass]="{
+                              'is-invalid':
+                              hospitalForm.get('name').errors &&
+                              hospitalForm.get('name').touched
+                            }"
+                            type="text" class="form-control" id="name1"  formControlName="name" placeholder="ادخل اسم المستشفى">
+                            <div
+                            class="invalid-feedback"
+                            *ngIf="
+                            hospitalForm.get('name').touched &&
+                            hospitalForm.get('name').hasError('required')">
+                           الرجاء ادخال المستشفى
+                             </div>
+                          </div>
+                          
+												</div>
+												<div class="form-group col-md-6">
+													<div class="form-group">
+														<label class="form-label" for="exampleInputEmail1">رقم الهاتف</label>
+                            <input   
+                            [ngClass]="{
+                              'is-invalid':
+                              hospitalForm.get('phone').errors &&
+                              hospitalForm.get('phone').touched
+                            }"
+                            type="text" class="form-control" id="name2"  formControlName="phone" placeholder="ادخل رقم الهاتف">
+                            <div
+                            class="invalid-feedback"
+                            *ngIf="
+                            hospitalForm.get('phone').touched &&
+                            hospitalForm.get('phone').hasError('required')">
+                      الرجاء ادخال رقم الهاتف"</div>
+                            
+													</div>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="inputEmail4" class="col-form-label">عدد الاطباء</label>
+                          <input
+                          [ngClass]="{
+                            'is-invalid':
+                            hospitalForm.get('numberOfDoctors').errors && hospitalForm.get('numberOfDoctors').touched
+                          }"
+                           type="text" class="form-control" id="inputEmail5"  formControlName="numberOfDoctors" placeholder="عداد الاطباء">
+                           <div
+                           class="invalid-feedback"
+                           *ngIf="
+                           hospitalForm.get('numberOfDoctors').touched &&
+                           hospitalForm.get('numberOfDoctors').hasError('required')
+                           "
+                         >
+                           الجاء ادخال اسم عداد الاطباء
+                         </div>
+												</div>
+												<!-- <div class="form-group col-md-6">
+													<label for="escription" class="col-form-label">لتوضيح</label>
+                          <input
+                          [ngClass]="{
+                            'is-invalid':
+                            hospitalForm.get('description').errors &&
+                            hospitalForm.get('description').touched
+                          }"
+                           type="text" class="form-control" id="escription" formControlName="description" placeholder="التوضيح">
+                           <div
+                           class="invalid-feedback"
+                           *ngIf="
+                           hospitalForm.get('description').touched &&
+                           hospitalForm.get('description').hasError('required')
+                           "
+                         >
+                          الرجاء ادخال توضيح
+                         </div>
+												</div> -->
+											</div>
+											<div class="form-group">
+												<label class="col-form-label"> التوضيح </label>
+                        <textarea 
+                        [ngClass]="{
+                          'is-invalid':
+                          hospitalForm.get('description').errors &&
+                          hospitalForm.get('description').touched
+                        }"
+                        class="form-control" formControlName="description" rows="4" placeholder="التوضيح"></textarea>
+                        <div
+                        class="invalid-feedback"
+                        *ngIf="
+                        hospitalForm.get('description').touched &&
+                        hospitalForm.get('description').hasError('required')
+                        "
+                      >
+                       الرجاء ادخال توضيح
+                      </div>
+											</div>
+											<button type="submit" [disabled]="!hospitalForm.valid" class="btn btn-success ">اضافة</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div> 
+
+
+		
+
+
+
+
+

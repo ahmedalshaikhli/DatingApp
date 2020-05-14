@@ -11,6 +11,7 @@ export class LaboratoryService {
 
   baseUrl = environment.apiUrl;
 constructor(private http: HttpClient) { }
+
 GetLaboratories() {
 
   return this.http.get<Laboratory[]>(this.baseUrl + 'laboratories');
@@ -24,5 +25,7 @@ PostLaboratory(laboratory: Laboratory) {
 getLaboratory(id): Observable<Laboratory> {
   return this.http.get<Laboratory>(this.baseUrl + 'laboratories/' + id);
 }
+
+
 
 }

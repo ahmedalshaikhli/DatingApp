@@ -35,18 +35,19 @@ export class HospitalCreationComponent implements OnInit {
     );
   }
 
-  register() {
+  createHospital() {
     if (this.hospitalForm.valid) {
       this.hospital = Object.assign({}, this.hospitalForm.value);
       this.hospitalService.PostHospitals(this.hospital).subscribe(
         () => {
-          this.alertify.success('Registration succesful');
+          this.alertify.success('تم اضافة مستشفى جديدة');
         },
         error => {
           this.alertify.error(error);
         },
         () => {
-          // this.router.navigate(['/hospitals']);
+          window.location.reload();
+          this.router.navigate(['/admin']);
         }
       );
     }

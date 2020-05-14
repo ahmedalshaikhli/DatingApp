@@ -1,23 +1,422 @@
-<div class="container mt-5">
-  <h2 class="text-center">لوحة الادارة</h2>
-  <div class="tab-panel">
-    <tabset class="member-tabset">
-      <tab heading="اضافة عضو جديد" *appHasRole="['Admin', 'Moderator']">
-        <app-register></app-register>
-      </tab>
-      <tab heading="ادارة الاعضاء" *appHasRole="['Admin']">
-        <div class="container">
-            <app-user-management></app-user-management>
-        </div>
-      </tab>
-      <tab heading="ادارة الصور" *appHasRole="['Admin', 'Moderator']">
-        <app-photo-management></app-photo-management>
-      </tab>
-      <tab heading="ادارة المستشفيات" *appHasRole="['Admin', 'Moderator']">
-        <app-hospital-creation></app-hospital-creation>
-      </tab>
-      
 
-    </tabset>
-  </div>
-</div>
+
+
+
+
+
+		<!--Page-->
+		<div class="page">
+			<div class="page-main h-100">
+
+		
+				<!-- Sidebar menu-->
+				<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+				<aside class="app-sidebar doc-sidebar">
+					<div class="app-sidebar__user clearfix">
+						<div class="dropdown user-pro-body">
+							<div>
+								<img src="../assets/images/users/male/25.jpg" alt="user-img" class="avatar avatar-lg brround">
+								<a href="editprofile.html" class="profile-img">
+									<span class="fa fa-pencil" aria-hidden="true"></span>
+								</a>
+							</div>
+							<div class="user-info">
+								<h2>Rubin Carmody</h2>
+								<span>Web Designer</span>
+							</div>
+						</div>
+					</div>
+					<ul class="side-menu">
+            <li class="side-menu__item" [ngClass]="{'active': tab.active}" *ngFor="let tab of tabs">
+              <a class="side-menu__item" (click)="tabChange(tab)"><i class="side-menu__icon fa fa-map-marker"></i><span class="side-menu__label"> {{tab.name}}</span></a>
+            </li>
+						<!-- <li>
+							<a class="side-menu__item" href="maps.html"><i class="side-menu__icon fa fa-map-marker"></i><span class="side-menu__label"> Maps</span></a>
+						</li> -->
+					</ul>
+					<div class="app-sidebar-footer">
+						<a href="emailservices.html">
+							<span class="fa fa-envelope" aria-hidden="true"></span>
+						</a>
+						<a href="profile.html">
+							<span class="fa fa-user" aria-hidden="true"></span>
+						</a>
+						<a href="editprofile.html">
+							<span class="fa fa-cog" aria-hidden="true"></span>
+						</a>
+						<a href="login.html">
+							<span class="fa fa-sign-in" aria-hidden="true"></span>
+							</a>
+						<a href="chat.html">
+							<span class="fa fa-comment" aria-hidden="true"></span>
+						</a>
+					</div>
+				</aside>
+
+				<div class="app-content  my-3 my-md-5">
+					<div class="side-app">
+						<div class="page-header">
+            				  <h4 class="page-title"> لوحة الادارة</h4>
+								<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"></a></li>
+								<li class="breadcrumb-item"><a href="#"></a></li>
+								
+							</ol>
+						</div>
+
+						<div class="row row-cards">
+							<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+								<div class="card">
+									<div class="card-body text-center feature">
+										<div class="fa-stack fa-lg fa-1x icons shadow-default bg-primary-transparent">
+											<i class="fa fa-hospital-o text-primary"></i>
+										</div>
+										<p class="card-text mt-3 mb-3">عدد المستشفيات</p>
+										<p class="h2 text-center text-primary">{{hospitals.length}}</p>
+									</div>
+								</div>
+							</div><!-- COL END -->
+
+							<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+								<div class="card">
+									<div class="card-body text-center feature">
+										<div class="fa-stack fa-lg fa-1x icons shadow-default bg-secondary-transparent">
+											<i class="fa fa-user-md text-secondary"></i>
+										</div>
+										<p class="card-text mt-3 mb-3">عدد الاطباء </p>
+										<p class="h2 text-center text-secondary">{{users.length}}</p>
+									</div>
+								</div>
+							</div><!-- COL END -->
+
+							<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+								<div class="card">
+									<div class="card-body text-center feature ">
+										<div class="fa-stack fa-lg fa-1x icons shadow-default bg-info-transparent">
+											<i class="fa fa-medkit text-info"></i>
+										</div>
+										<p class="card-text mt-3 mb-3">عدد الصيدليات</p>
+										<p class="h2 text-center text-success-1">{{pharmacies.length}}</p>
+									</div>
+								</div>
+							</div><!-- COL END -->
+
+							<div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+								<div class="card">
+									<div class="card-body text-center feature">
+										<div class="fa-stack fa-lg icons shadow-default bg-warning-transparent">
+											<i class="fa fa-building-o text-warning"></i>
+										</div>
+										<p class="card-text mt-3 mb-3">عدد المختبرات </p>
+										<p class="h2 text-center text-secondary-1">{{laboratories.length}}</p>
+									</div>
+								</div>
+							</div><!-- COL END -->
+						</div>
+
+
+				
+
+            <div class="tab-content">
+
+              <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 1, 'hideTab':selectedUserTab != 1}"> <!-- Profile tab -->
+
+				  <div class="row">
+					<div class="col-md-12">
+					  <div class="card">
+						<div class="card-body p-6">
+						  <div class="panel panel-primary">
+							<div class="tab-menu-heading">
+							  <div class="tabs-menu ">
+								<!-- Tabs -->
+								<ul class="nav panel-tabs">
+								  <li class=""><a href="#tab1" class="active" data-toggle="tab">قائمة الاطباء</a></li>
+								  <li><a href="#tab2" data-toggle="tab">اضافة طبيب جديد</a></li>
+								  <!-- <li><a href="#tab3" data-toggle="tab">Services</a></li>
+								  <li><a href="#tab4" data-toggle="tab">Pages</a></li> -->
+								</ul>
+							  </div>
+							</div>
+							<div class="panel-body tabs-menu-body">
+							  <div class="tab-content">
+								<div class="tab-pane active " id="tab1">
+									<div class="panel-body">
+										<app-user-management></app-user-management>
+									  </div>  
+								</div>
+								<div class="tab-pane  " id="tab2">
+									<app-register></app-register>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+              </div>
+      
+              <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 2, 'hideTab':selectedUserTab != 2}"> <!-- hospital -->
+          
+					  <div class="row">
+						<div class="col-md-12">
+						  <div class="card">
+							<div class="card-body p-6">
+							  <div class="panel panel-primary">
+								<div class="tab-menu-heading">
+								  <div class="tabs-menu ">
+									<!-- Tabs -->
+									<ul class="nav panel-tabs">
+									  <li class=""><a href="#tab3" class="active" data-toggle="tab">قائمة المستشفيات</a></li>
+									  <li><a href="#tab4" data-toggle="tab">اضافة مستشفى</a></li>
+									  <!-- <li><a href="#tab3" data-toggle="tab">Services</a></li>
+									  <li><a href="#tab4" data-toggle="tab">Pages</a></li> -->
+									</ul>
+								  </div>
+								</div>
+								<div class="panel-body tabs-menu-body">
+								  <div class="tab-content">
+									<div class="tab-pane active " id="tab3">
+										<div class="panel-body">
+											<div class="col-md-12">
+												<div class="card">
+													<div class="card-body">
+														<div class="table-responsive border-top userprof-tab">
+															<table class="table table-bordered table-hover mb-0 text-nowrap">
+																<thead>
+																	<tr>
+																
+																		<th>id</th>
+																		<th>اسم المستشفى</th>
+																		<th>الرقم</th>
+																		<th>عدد الاطباء</th>
+																		<th>التوضيح</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr *ngFor="let hospital of hospitals">
+																		<td>
+																			<div class="media mt-0 mb-0">
+																				<div class="card-aside-img">
+																					<a href="#"></a>
+																					<img src="../assets/images/media/4.jpg" alt="img">
+																				</div>
+																				<div class="media-body">
+																					<div class="card-item-desc mr-4 p-0 mt-2">
+																						<a href="#" class="text-dark"><h4 class="font-weight-semibold">{{hospital.id}}</h4></a>
+																						<a href="#"><i class="fa fa-clock-o ml-1"></i> Feb-21-2018 , 16:54</a>
+																					</div>
+																				</div>
+																			</div>
+																		</td>
+																		<td>{{hospital.name}}</td>
+																		<td class="font-weight-semibold fs-16">{{hospital.phone}}</td>
+																		<td class="font-weight-semibold fs-16">{{hospital.numberOfDoctors}}</td>
+																		<td class="font-weight-semibold fs-16">{{hospital.description}}</td>
+																		<td>
+																			<a class="btn btn-success btn-sm text-white" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+																			<a class="btn btn-danger btn-sm text-white" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+																			<a class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="Save to Wishlist"><i class="fa fa-heart-o"></i></a>
+																			<a class="btn btn-primary btn-sm text-white" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye"></i></a>
+																		</td>
+																	</tr>
+																	
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										  </div>  
+									</div>
+									<div class="tab-pane  " id="tab4">
+										<app-hospital-creation></app-hospital-creation>
+									</div>
+								  </div>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+              </div>
+      
+              <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 3, 'hideTab':selectedUserTab != 3}"> <!-- pharmacy-->
+				<div class="row">
+					<div class="col-md-12">
+					  <div class="card">
+						<div class="card-body p-6">
+						  <div class="panel panel-primary">
+							<div class="tab-menu-heading">
+							  <div class="tabs-menu ">
+								<!-- Tabs -->
+								<ul class="nav panel-tabs">
+								  <li class=""><a href="#tab5" class="active" data-toggle="tab">قائمة الصيدليات</a></li>
+								  <li><a href="#tab6" data-toggle="tab">اضافة صيدلية</a></li>
+								  <!-- <li><a href="#tab3" data-toggle="tab">Services</a></li>
+								  <li><a href="#tab4" data-toggle="tab">Pages</a></li> -->
+								</ul>
+							  </div>
+							</div>
+							<div class="panel-body tabs-menu-body">
+							  <div class="tab-content">
+								<div class="tab-pane active " id="tab5">
+									<div class="panel-body">
+										<div class="col-md-12">
+											<div class="card">
+												<div class="card-body">
+													<div class="table-responsive border-top userprof-tab">
+														<table class="table table-bordered table-hover mb-0 text-nowrap">
+															<thead>
+																<tr>
+															
+																	<th>id</th>
+																	<th>اسم الصيدلية</th>
+																	<th>الرقم</th>
+																	<th>التوضيح</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr *ngFor="let pharmacy of pharmacies">
+																	<td>
+																		<div class="media mt-0 mb-0">
+																			<div class="card-aside-img">
+																				<a href="#"></a>
+																				<img src="../assets/images/media/4.jpg" alt="img">
+																			</div>
+																			<div class="media-body">
+																				<div class="card-item-desc mr-4 p-0 mt-2">
+																					<a href="#" class="text-dark"><h4 class="font-weight-semibold">{{pharmacy.id}}</h4></a>
+																					<a href="#"><i class="fa fa-clock-o ml-1"></i> Feb-21-2018 , 16:54</a>
+																				</div>
+																			</div>
+																		</div>
+																	</td>
+																	<td>{{pharmacy.name}}</td>
+																	<td class="font-weight-semibold fs-16">{{pharmacy.phone}}</td>
+															
+																	<td class="font-weight-semibold fs-16">{{pharmacy.description}}</td>
+																	<td>
+																		<a class="btn btn-success btn-sm text-white" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+																		<a class="btn btn-danger btn-sm text-white" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+																		<a class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="Save to Wishlist"><i class="fa fa-heart-o"></i></a>
+																		<a class="btn btn-primary btn-sm text-white" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye"></i></a>
+																	</td>
+																</tr>
+									
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									  </div>  
+								</div>
+								<div class="tab-pane  " id="tab6">
+									<app-pharmacy-creation></app-pharmacy-creation>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+              </div>
+      
+              <div class="tab-pane active" [ngClass]="{'showTab':selectedUserTab == 4, 'hideTab':selectedUserTab != 4}"> <!-- stripe account tab -->
+				<div class="row">
+					<div class="col-md-12">
+					  <div class="card">
+						<div class="card-body p-6">
+						  <div class="panel panel-primary">
+							<div class="tab-menu-heading">
+							  <div class="tabs-menu ">
+								<!-- Tabs -->
+								<ul class="nav panel-tabs">
+								  <li class=""><a href="#tab7" class="active" data-toggle="tab">قائمة المختبرات</a></li>
+								  <li><a href="#tab8" data-toggle="tab">اضافة المختبر</a></li>
+								  <!-- <li><a href="#tab3" data-toggle="tab">Services</a></li>
+								  <li><a href="#tab4" data-toggle="tab">Pages</a></li> -->
+								</ul>
+							  </div>
+							</div>
+							<div class="panel-body tabs-menu-body">
+							  <div class="tab-content">
+								<div class="tab-pane active " id="tab7">
+									<div class="panel-body">
+										<div class="col-md-12">
+											<div class="card">
+												<div class="card-body">
+													<div class="table-responsive border-top userprof-tab">
+														<table class="table table-bordered table-hover mb-0 text-nowrap">
+															<thead>
+																<tr>
+															
+																	<th>id</th>
+																	<th>اسم المختبر</th>
+																	<th>الرقم</th>
+																	<th>التوضيح</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr *ngFor="let laboratory of laboratories">
+																	<td>
+																		<div class="media mt-0 mb-0">
+																			<div class="card-aside-img">
+																				<a href="#"></a>
+																				<img src="../assets/images/media/4.jpg" alt="img">
+																			</div>
+																			<div class="media-body">
+																				<div class="card-item-desc mr-4 p-0 mt-2">
+																					<a href="#" class="text-dark"><h4 class="font-weight-semibold">{{laboratory.id}}</h4></a>
+																					<a href="#"><i class="fa fa-clock-o ml-1"></i> Feb-21-2018 , 16:54</a>
+																				</div>
+																			</div>
+																		</div>
+																	</td>
+																	<td>{{laboratory.name}}</td>
+																	<td class="font-weight-semibold fs-16">{{laboratory.phone}}</td>
+															
+																	<td class="font-weight-semibold fs-16">{{laboratory.description}}</td>
+																	<td>
+																		<a class="btn btn-success btn-sm text-white" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+																		<a class="btn btn-danger btn-sm text-white" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>
+																		<a class="btn btn-info btn-sm text-white" data-toggle="tooltip" data-original-title="Save to Wishlist"><i class="fa fa-heart-o"></i></a>
+																		<a class="btn btn-primary btn-sm text-white" data-toggle="tooltip" data-original-title="View"><i class="fa fa-eye"></i></a>
+																	</td>
+																</tr>
+									
+															</tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									  </div>  
+								</div>
+								<div class="tab-pane  " id="tab8">
+									<app-laboratory-creation></app-laboratory-creation>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+              </div>   
+            </div>
+			</div>
+			</div>
+		</div>
+
+
+		</div>
+
+		
+
+

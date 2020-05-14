@@ -24,6 +24,7 @@ import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { LaboratoryComponent } from './laboratory/laboratory.component';
 import { LaboratoryDetailsComponent } from './laboratory/laboratory-details/laboratory-details.component';
 import { LoginComponent } from './login/login.component';
+import { FaqComponent } from './faq/faq.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -114,6 +115,10 @@ export const appRoutes: Routes = [
       {
         path: 'app-contact',
         component: ContactComponent
+      },
+      {
+        path: 'faq',
+        component: FaqComponent
       }
     ]
   },
